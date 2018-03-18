@@ -1,0 +1,147 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+hr {
+    border: 0px;
+    height: 2px;
+    background-color: black;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    transition: all 250ms ease-in-out;
+    transform: rotate3d(0, 1, 0, 90deg) /*change 2nd value: 1 for invisible, 0 for visible*/
+}
+* {
+    outline: none;
+}
+.cover {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    display: none;
+    transition: all 300ms ease-in-out;
+}
+.header {
+    background-image: url("http://chrisvasterling.github.io/delongyearbooks/Files/Images/Other/Background/bk1.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding-bottom: 10px;
+}
+.navBar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
+    border-bottom-width: 1px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    display: flex;
+    z-index: 1;
+    align-items: center;
+}
+.menuTog {
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9;
+    text-align: center;
+    display: none;
+}
+.menuTogBar {
+    height: 3px;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    margin: 7px 0px 7px 0px;
+    display: block;
+    background-color: white;
+}
+.pageName {
+    font-family: "Quicksand";
+    font-size: 25px;
+    padding: 10px;
+    display: inline-block;
+}
+.mainNav {
+    display: inline-block;
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    padding: 10px;
+}
+.menuTog, .navButton, .searchButton, .searchButtonBtn {
+    background-color: rgba(120, 170, 215, .2);
+    border: 2px solid black;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(1,0,0,1)
+}
+.navButton, .searchButton {
+    font-family: "Roboto";
+    font-size: 15px;
+    color: white;
+    padding: 15px 10px 15px 10px;
+    margin: 0px 5px 0px 5px;
+    min-width: 75px;
+}
+.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked {
+    background-color: rgba(120, 170, 215, 1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1);
+}
+.navButton > hr, .searchButton > hr {
+    background-color: rgba(215, 10, 45, .8);
+}
+.navButton:hover > hr, .searchButton:hover > hr {
+    transform: rotate3d(0, 0, 0, 90deg)
+}
+/*Rebuild if flex is not supported @support flex thing*/
+@media screen and (max-width: 800px) {
+    .navBar {
+        box-shadow: 0px 0px 10px black;
+        border: 0px;
+    }
+    .menuTog {
+        display: block;
+    }
+    .mainNav {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        height: calc(100% - 20px); /*20px for top/bottom padding*/
+        width: 300px;
+        right: -320px;
+        max-width: 80%;
+        background-color: rgba(0, 0, 0, .75);
+        display: block;
+        text-align: center;
+        overflow-y: auto;
+        transition: all 300ms ease-in-out;
+    }
+    .mainNavOpen {
+        box-shadow: 0px 0px 10px black;
+        right: 0px;
+    }
+    .navButton {
+        margin: 5px 10px 5px 10px;
+        display: inline-block;
+        width: calc(80% - 20px);
+        font-size: 17px;
+        padding: 10px;
+    }
+    .coverOn {
+        background-color: rgba(0, 0, 0, .5);
+    }
+}

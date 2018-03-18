@@ -1,1 +1,80 @@
-This is a test
+﻿<!DOCTYPE html>
+<html>
+	<head>
+        <title>2018 North Yearbook</title>
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/home.css"/>
+        <script src="js/main.js"></script>
+        <script src="js/home.js"></script>
+        <script>
+
+        </script>
+        <link rel="icon" href="media/icon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    </head>
+	<body>
+		<div class="header" id="header">
+			<div class="navBar" id="navBar">
+				<div class="cover" id="cover" onmousedown="menuItemSelect(this.id)"></div>
+				<button class="menuTog" onmousedown="menuItemSelect(this.id)" id="menuTog" data-state="close">
+					<div class="menuTogBar"></div>
+					<div class="menuTogBar"></div>
+					<div class="menuTogBar"></div>
+				</button>
+				<div class="pageName">
+					2018 North Yearbook
+				</div>
+				<div class="mainNav" id="mainNav">
+					<button class="navButton" id="navButton1" data-page="html/seniors.html"
+							onmousedown="menuItemSelect(this.id)">
+						Seniors
+						<hr/>
+					</button>
+					<button class="navButton" id="navButton2" data-page="html/juniors.html"
+							onmousedown="menuItemSelect(this.id)">
+						Juniors
+						<hr/>
+					</button>
+					<button class="navButton" id="navButton3" data-page="html/sophomores.html"
+							onmousedown="menuItemSelect(this.id)">
+						Sophomores
+						<hr/>
+					</button>
+					<button class="navButton" id="navButton4" data-page="html/freshmen.html"
+							onmousedown="menuItemSelect(this.id)">
+						Freshmen
+						<hr/>
+					</button>
+					<button class="navButton" id="navButton5" data-page="html/staff.html"
+							onmousedown="menuItemSelect(this.id)">
+						Staff
+						<hr/>
+					</button>
+				</div>
+			</div>
+			<div class="headerContent">
+				<button class="searchButtonBtn" onmousedown="toggleSearch(this.id)" id="searchTog">
+					<img src="media/searchIcon.png"/>
+				</button>
+				<div class="studentSearchBox" id="searchBox">
+					<div class="studentSearchBoxes">
+						<input placeholder="First Name" type="text"/>
+						<input placeholder="Last Name" type="text"/>
+					</div>
+					<button class="searchButton" onmousedown="runSearch(this.id)" id="searchBtn">
+						Search
+						<hr/>
+					</button>
+					<button class="searchButton" onmousedown="toggleSearch(this.id)" id="cancelSearch">
+						Close
+						<hr/>
+					</button>
+				</div>
+				Search Results
+			</div>
+		</div>
+	</body>
+	</body>
+</html>
