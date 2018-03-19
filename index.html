@@ -60,10 +60,10 @@
 				</button>
 				<div class="studentSearchBox" id="searchBox">
 					<div class="studentSearchBoxes">
-						<input placeholder="First Name" type="text"/>
-						<input placeholder="Last Name" type="text"/>
+						<input placeholder="First Name" id="firstNameSearch"type="text"/>
+						<input placeholder="Last Name" id="lastNameSearch"type="text"/>
 					</div>
-					<button class="searchButton" onmousedown="runSearch(this.id)" id="searchBtn">
+                    <button class="searchButton" onmousedown="toggleSearch(this.id)" id="searchBtn">
 						Search
 						<hr/>
 					</button>
@@ -72,7 +72,21 @@
 						<hr/>
 					</button>
 				</div>
-				Search Results
+				<div class="searchResultSections">
+                    <span class="searchResultSecTitle">
+                        Pages with: <span id="searchResultExact"></span>
+                    </span>
+                </div>
+                <div class="searchResultSections">
+                    <span class="searchResultSecTitle">
+                        Pages with first name: <span id="searchResultFirst"></span>
+                    </span>
+                </div>
+                <div class="searchResultSections">
+                    <span class="searchResultSecTitle">
+                        Pages with last name: <span id="searchResultLast"></span>
+                    </span>
+                </div>
 			</div>
 		</div>
 	</body>
