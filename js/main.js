@@ -31,7 +31,7 @@ function JSLink(IntExt, page, delay) {
         if (IntExt.toLowerCase() == 'external') {
             window.open(page, "_self")
         } else if (IntExt.toLowerCase() == 'newtab') {
-            window.open(page)
+            window.open(page, "_blank")
         } else if (IntExt.toLowerCase() == 'back') {
             window.history.back()
         } else if (IntExt.toLowerCase() == 'internal') {

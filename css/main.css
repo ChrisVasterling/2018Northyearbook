@@ -16,6 +16,10 @@ hr {
 * {
     outline: none;
 }
+a, a:visited, a:active {
+    color: blue;
+    cursor: pointer;
+}
 .cover {
     position: fixed;
     top: 0px;
@@ -32,6 +36,7 @@ hr {
     background-size: cover;
     background-position: center center;
     padding-bottom: 10px;
+    overflow: auto;
 }
 .navBar {
     position: fixed;
@@ -99,10 +104,10 @@ hr {
     margin: 0px 5px 0px 5px;
     min-width: 75px;
 }
-.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked {
-    background-color: rgba(120, 170, 215, 1);
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1);
+.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked, .searchResultImgOpen{
+    background-color: rgba(120, 170, 215, 1) !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1) !important;
 }
 .navButton > hr, .searchButton > hr {
     background-color: rgba(215, 10, 45, .8);

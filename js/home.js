@@ -39,11 +39,11 @@ function toggleSearch(id) {
 }
 
 var studentPageList = [
-    ["first", "last", ["318", "31415926.."]],
-    ["chris", "last", ["555"]],
-    ["BILLY", "last", ["111"]],
-    ["first", "last", ["99"]],
-    ["first", "lool", ["333", "265"]]
+    ["first", "last", ["1", "2"]],
+    ["chris", "last", ["3"]],
+    ["billy", "last", ["4"]],
+    ["first", "last", ["5"]],
+    ["first", "lool", ["6", "7"]]
 ]
 function runSearch() {
     var firstName = document.getElementById("firstNameSearch").value.toLowerCase(), 
@@ -54,7 +54,10 @@ function runSearch() {
         matchExact = [], 
         SRExact = document.getElementById("searchResultExact"),
         SRFirst = document.getElementById("searchResultFirst"),
-        SRLast = document.getElementById("searchResultLast");
+        SRLast = document.getElementById("searchResultLast"),
+        SRICExact = document.getElementById("searchResultExactImgCont"),
+        SRICFirst = document.getElementById("searchResultFirstImgCont"),
+        SRICLast = document.getElementById("searchResultLastImgCont");
     // perform search
     // ..List[Y]-Y is index of induvidual student
     // ..List[Y][0]-first name
@@ -91,4 +94,39 @@ function runSearch() {
         
     }
     
+    // call function to display/build results
+    loadSearchResults("searchResultExactImgCont", matchExact);
+    loadSearchResults("searchResultFirstImgCont", matchFirst);
+    loadSearchResults("searchResultLastImgCont", matchLast);
+    
+
+}
+function loadSearchResults(destID, matchList) {
+    var dest = document.getElementById(destID);
+    dest.innerHTML = "";
+    // matchList[s] is the data for a student
+    for (var s in matchList) {
+        // loop through page numbers for each student s
+        for (var i in matchList[s][2]) {
+            var divCont = document.createElement("div"),
+                img = document.createElement("img");
+            img.src = "media/pages/" + matchList[s][2][i] + ".jpg"; // change to low res
+            img.alt = "Page: " + matchList[s][2][i];
+            img.setAttribute("class", "searchResultImg");
+            img.setAttribute("id", "SRI" + matchList[s][2][i]);
+            divCont.setAttribute("class", "searchResultImgsDiv");
+            divCont.setAttribute("id", "divSRI" + matchList[s][2][i]);
+            divCont.setAttribute("onmousedown", "openSearchImg(this.id, 'media/pages/" + matchList[s][2][i] + ".jpg')");
+            divCont.appendChild(img);
+            dest.appendChild(divCont);
+        }
+    }
+}
+function openSearchImg(id, page) {
+    var img = document.getElementById(id);
+    img.setAttribute("class", "searchResultImgsDiv searchResultImgOpen");
+    JSLink("newtab", page, "300")
+    setTimeout(function(){
+        img.setAttribute("class", "searchResultImgsDiv");
+    }, 300)
 }

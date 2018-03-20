@@ -63,32 +63,34 @@
 						<input placeholder="First Name" id="firstNameSearch"type="text"/>
 						<input placeholder="Last Name" id="lastNameSearch"type="text"/>
 					</div>
-                    <button class="searchButton" onmousedown="toggleSearch(this.id)" id="searchBtn">
-						Search
-						<hr/>
-					</button>
 					<button class="searchButton" onmousedown="toggleSearch(this.id)" id="cancelSearch">
 						Close
+						<hr/>
+					</button>
+                    <button class="searchButton" onmousedown="toggleSearch(this.id)" id="searchBtn">
+						Search
 						<hr/>
 					</button>
 				</div>
 				<div class="searchResultSections">
                     <span class="searchResultSecTitle">
-                        Pages with: <span id="searchResultExact"></span>
+                        Student: <span id="searchResultExact"></span>
                     </span>
+                    <div class="searchResultImgs" id="searchResultExactImgCont"></div>
                 </div>
                 <div class="searchResultSections">
                     <span class="searchResultSecTitle">
-                        Pages with first name: <span id="searchResultFirst"></span>
+                        Student(s) with first name: <span id="searchResultFirst"></span>
                     </span>
+                    <div class="searchResultImgs" id="searchResultFirstImgCont"></div>
                 </div>
                 <div class="searchResultSections">
                     <span class="searchResultSecTitle">
-                        Pages with last name: <span id="searchResultLast"></span>
+                        Student(s) with last name: <span id="searchResultLast"></span>
                     </span>
+                    <div class="searchResultImgs" id="searchResultLastImgCont"></div>
                 </div>
 			</div>
 		</div>
-	</body>
 	</body>
 </html>
