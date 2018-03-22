@@ -104,7 +104,7 @@ a, a:visited, a:active {
     margin: 0px 5px 0px 5px;
     min-width: 75px;
 }
-.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked, .searchResultImgOpen{
+.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked{
     background-color: rgba(120, 170, 215, 1) !important;
     border-radius: 5px !important;
     box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1) !important;

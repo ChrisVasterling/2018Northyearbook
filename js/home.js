@@ -1,4 +1,4 @@
-function toggleSearch(id) {
+﻿function toggleSearch(id) {
     var btn = document.getElementById(id),
         searchBox = document.getElementById("searchBox"),
         tog = document.getElementById("searchTog");
@@ -39,6 +39,7 @@ function toggleSearch(id) {
 }
 
 var studentPageList = [
+    ["mother", "russia", ["Да"]],
     ["first", "last", ["1", "2"]],
     ["chris", "last", ["3"]],
     ["billy", "last", ["4"]],
@@ -102,22 +103,33 @@ function runSearch() {
 
 }
 function loadSearchResults(destID, matchList) {
-    var dest = document.getElementById(destID);
+    var dest = document.getElementById(destID),
+        allowIMG = true; // state determined by fiture check box
     dest.innerHTML = "";
     // matchList[s] is the data for a student
     for (var s in matchList) {
         // loop through page numbers for each student s
         for (var i in matchList[s][2]) {
-            var divCont = document.createElement("div"),
-                img = document.createElement("img");
-            img.src = "media/pages/" + matchList[s][2][i] + ".jpg"; // change to low res
-            img.alt = "Page: " + matchList[s][2][i];
-            img.setAttribute("class", "searchResultImg");
-            img.setAttribute("id", "SRI" + matchList[s][2][i]);
+            var divCont = document.createElement("div");
+            
             divCont.setAttribute("class", "searchResultImgsDiv");
             divCont.setAttribute("id", "divSRI" + matchList[s][2][i]);
             divCont.setAttribute("onmousedown", "openSearchImg(this.id, 'media/pages/" + matchList[s][2][i] + ".jpg')");
-            divCont.appendChild(img);
+            if (allowIMG == true) {
+                var img = document.createElement("img");
+                img.src = "media/pages/" + matchList[s][2][i] + ".jpg"; // change to low res
+                img.alt = "Page: " + matchList[s][2][i];
+                img.setAttribute("class", "searchResultImg");
+                img.setAttribute("id", "SRI" + matchList[s][2][i]);
+                divCont.appendChild(img);
+            } else {
+                var pageNum = document.createElement("div"),
+                    p = document.createElement("p");
+                pageNum.setAttribute("class", "searchResultPageNum");
+                p.innerHTML = "Page: " + matchList[s][2][i];
+                pageNum.appendChild(p);
+                divCont.appendChild(pageNum);
+            }
             dest.appendChild(divCont);
         }
     }
@@ -125,8 +137,8 @@ function loadSearchResults(destID, matchList) {
 function openSearchImg(id, page) {
     var img = document.getElementById(id);
     img.setAttribute("class", "searchResultImgsDiv searchResultImgOpen");
-    JSLink("newtab", page, "300")
+    JSLink("newtab", page, "500")
     setTimeout(function(){
         img.setAttribute("class", "searchResultImgsDiv");
-    }, 300)
+    }, 500)
 }

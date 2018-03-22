@@ -2,7 +2,7 @@ window.addEventListener("load", function(){
     navBarBackFill();
 })
 /*For some reason I do not wish to look into at this time, this
-fixes the issue in forefox where styles/classes added stick when
+fixes the issue in firefox where styles/classes added stick when
 hitting the back arrow to go back a page in the browser*/
 window.addEventListener("unload", function(){})
 
