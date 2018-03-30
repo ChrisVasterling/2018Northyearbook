@@ -42,16 +42,13 @@
     margin: 0px 10px 0px 10px;
     width: calc(50% - 30px);
     /*float: left;*/
-    border: 2px solid black;
+    border: 2px solid transparent;
     color: white;
     background-color: rgba(120, 170, 215, .2);
-    border-radius: 100px;
     transition: all 300ms cubic-bezier(1,0,0,1);
     transform: scale(1);
 }
 .studentSearchBoxes > input:focus {
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1);
     background-color: rgba(120, 170, 215, 1);
 }
 .searchButtonBtn {
@@ -62,6 +59,39 @@
     height: 50px;
     width: 60px;
     min-width: auto;
+}
+.searchButton {
+    font-family: "Roboto";
+    font-size: 15px;
+    color: white;
+    padding: 15px 10px 15px 10px;
+    margin: 0px 5px 0px 5px;
+    min-width: 75px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    transform: scale(1);
+}
+.searchButtonBtn, .searchButton {
+    border: 2px solid transparent;
+    border-left: None;
+    border-right: None;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+.searchButtonBtn:hover, .searchButton:hover {
+    background-color: rgba(120, 170, 215, .2);
+    border-color: white;
+}
+.searchButtonBtnClicked {
+    background-color: rgba(120, 170, 215, 1) !important;
+    border-color: rgba(120, 170, 215, 1) !important;
+}
+.searchButton > hr {
+    background-color: rgba(215, 10, 45, .8);
+}
+.searchButton:hover > hr {
+    transform: rotate3d(0, 0, 0, 90deg)
 }
 .searchButtonBtn > img {
     height: 100%;
@@ -84,20 +114,23 @@
 .searchResultImgsDiv {
     display: inline-block;
     margin: 7px;
-    height: 130px;
+    height: 150px;
     min-width: 75px;
     cursor: pointer;
-    background-color: rgba(120, 170, 215, .2);
+    background-color: transparent;
     overflow: hidden;
     transform: scale(1);
     transition: all 300ms ease-in-out;
-    border: 2px solid black;
+    border: 2px solid transparent;
+    border-left: None;
+    border-right: None;
     opacity: .75;
     padding: 5px;
 }
 .searchResultImgsDiv:hover {
     opacity: 1;
-    border-color: rgba(120, 170, 215, 1);
+    border-color: white;
+    background-color: rgba(120, 170, 215, .2);
 }
 .searchResultImg {
     height: 100%;
@@ -106,7 +139,8 @@
 }
 .searchResultImgOpen {
     //transform: scale(.9);
-    background-color: rgba(120, 170, 215, 1);
+    background-color: rgba(120, 170, 215, 1) !important;
+    border-color: rgba(120, 170, 215, 1) !important;
 }
 .searchResultPageNum {
     text-align: center;
@@ -124,6 +158,21 @@
     .studentSearchBox {
         box-shadow: 0px 0px 10px black;
         border: 0px;
+    }
+    .searchButtonBtn, .searchButton, .searchResultImgsDiv {
+        border: 2px solid transparent;
+    }
+    .searchButtonBtn:hover, .searchButton:hover, .searchResultImgsDiv:hover {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    .searchButtonBtnClicked, .searchResultImgOpen {
+        background-color: rgba(120, 170, 215, .2) !important;
+        border-color: rgba(120, 170, 215, 1) !important;
+    }
+    .studentSearchBoxes > input:focus {
+        border-color: rgba(120, 170, 215, 1) !important;
+        background-color: rgba(120, 170, 215, .2) !important;
     }
 }
 @media screen and (max-width: 600px) {

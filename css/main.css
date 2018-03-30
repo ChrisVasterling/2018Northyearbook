@@ -28,6 +28,7 @@ a, a:visited, a:active {
     width: 100%;
     z-index: 8;
     display: none;
+    transform: scale(1);
     transition: all 300ms ease-in-out;
 }
 .header {
@@ -54,20 +55,25 @@ a, a:visited, a:active {
     align-items: center;
 }
 .menuTog {
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 55px;
     position: fixed;
     top: 10px;
     right: 10px;
     z-index: 9;
     text-align: center;
     display: none;
+    background-color: rgba(120, 170, 215, .2);
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 300ms ease-in;
+    transform: scale(1);
 }
 .menuTogBar {
     height: 3px;
-    width: 70%;
+    width: 85%;
     position: relative;
-    left: 15%;
+    left: calc(15% / 2);
     margin: 7px 0px 7px 0px;
     display: block;
     background-color: white;
@@ -88,31 +94,36 @@ a, a:visited, a:active {
     padding: 10px;
     transform: scale(1);
 }
-.menuTog, .navButton, .searchButton, .searchButtonBtn {
-    background-color: rgba(120, 170, 215, .2);
-    border: 2px solid black;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 300ms cubic-bezier(1,0,0,1);
-    transform: scale(1);
+.menuTogClicked {
+    background-color: rgba(120, 170, 215, 1) !important;
+    border-color: rgba(120, 170, 215, 1) !important;
 }
-.navButton, .searchButton {
+.navButton {
     font-family: "Roboto";
     font-size: 15px;
     color: white;
     padding: 15px 10px 15px 10px;
     margin: 0px 5px 0px 5px;
     min-width: 75px;
+    border: 2px solid transparent;
+    border-right: None;
+    border-left: None;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
 }
-.navButtonClicked, .menuTogClicked, .searchButtonBtnClicked, .buttonClicked{
+.navButton:hover, .searchButtonBtn:hover, .searchButton:hover {
+    background-color: rgba(120, 170, 215, .2);
+    border-color: white;
+}
+.navButtonClicked {
     background-color: rgba(120, 170, 215, 1) !important;
-    border-radius: 5px !important;
-    box-shadow: 0px 0px 15px -5px rgba(120, 170, 215, 1) !important;
+    border-color: rgba(120, 170, 215, 1) !important;
 }
-.navButton > hr, .searchButton > hr {
+.navButton > hr {
     background-color: rgba(215, 10, 45, .8);
 }
-.navButton:hover > hr, .searchButton:hover > hr {
+.navButton:hover > hr {
     transform: rotate3d(0, 0, 0, 90deg)
 }
 /*Rebuild if flex is not supported @support flex thing*/
@@ -148,6 +159,17 @@ a, a:visited, a:active {
         width: calc(80% - 20px);
         font-size: 17px;
         padding: 10px;
+        border: 2px solid transparent;
+        border-top: None;
+        border-bottom: None;
+    }
+    .navButton:hover {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    .navButtonClicked {
+        background-color: rgba(120, 170, 215, .2) !important;
+        border-color: rgba(120, 170, 215, 1) !important;
     }
     .coverOn {
         background-color: rgba(0, 0, 0, .5);
