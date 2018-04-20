@@ -1,30 +1,45 @@
-window.addEventListener("load", function(){
-    navBarBackFill();
-})
 /*For some reason I do not wish to look into at this time, this
 fixes the issue in firefox where styles/classes added stick when
 hitting the back arrow to go back a page in the browser*/
 window.addEventListener("unload", function(){})
-
-window.addEventListener("resize", function(){
-    navBarBackFill();
+window.addEventListener("load", function(){
+    setTopBarName()
 })
+window.addEventListener("resize", function(){
+    setTopBarName()
+})
+function setTopBarName() {
+    var TB = document.getElementById("topBar"),
+        TBN = document.getElementById("topBarName"),
+        M = document.getElementById("menu"),
+        TLB = document.getElementById("toolBar");
+    if (window.innerWidth > 700) {
+        TBN.style.top = ((TB.offsetHeight - M.offsetHeight)/2) - (TBN.offsetHeight/2) + "px";        
+    } else {
+        TBN.style.top = ((TB.offsetHeight + TLB.offsetHeight)/2) - (TBN.offsetHeight/2) + "px";
+    }
+}
 function menuItemSelect(id) {
     var btn = document.getElementById(id),
         page = btn.dataset.page,
         cvr = document.getElementById("cover");
     if (id == "menuTog") {
-        btn.setAttribute("class", "menuTog menuTogClicked");
+        btn.setAttribute("class", "button TBButton TBButtonClicked buttonClicked");
         cvr.style.display = "block";
         setTimeout(function(){
-            toggleMenu(btn);
+            toggleMenu(btn, cvr);
         }, 300)
     } else if (id == "cover") {
-        toggleMenu(document.getElementById("menuTog"))
+        toggleMenu(document.getElementById("menuTog"), cvr)
     } else {
-        btn.setAttribute("class", "navButton navButtonClicked");
-        JSLink('external', page, 600);
+        btn.setAttribute("class", "button menuBtn buttonClicked");
+        JSLink('external', page, 500);
     }
+}
+function backBtn(id, delay) {
+    var btn = document.getElementById(id);
+    btn.setAttribute("class", "button buttonClicked");
+    setTimeout(JSLink("back", "NULL", delay*2));
 }
 function JSLink(IntExt, page, delay) {
     setTimeout(function(){
@@ -36,42 +51,27 @@ function JSLink(IntExt, page, delay) {
             window.history.back()
         } else if (IntExt.toLowerCase() == 'internal') {
             var location = document.getElementById(btn).dataset.page,
-                section = document.getElementById(location).offsetTop - navBarBackFill() - 10;
+                section = document.getElementById(location).offsetTop - 10;
             window.scrollTo(0, section);
         }
     }, delay)
 }
-
-function toggleMenu(tog) {
-    var mnu = document.getElementById("mainNav"),
-        cvr = document.getElementById("cover");
-    if (tog.dataset.state.toLowerCase() == "close") {
-        openMenu(mnu, tog, cvr)
-    } else if (tog.dataset.state.toLowerCase() == "open") {
-        closeMenu(mnu, tog, cvr)
+var menuOpen = false;
+function toggleMenu(btn, cvr) {
+    var mnu = document.getElementById("menu");
+    if (menuOpen) {
+        mnu.setAttribute("class", "menu");
+        btn.setAttribute("class", "button TBButton");
+        btn.style.opacity = "1";
+        cvr.style.opacity = "0";
+        setTimeout(function(){
+            cvr.style.display = "none";
+        }, 200)
+        menuOpen = false;
+    } else {
+        mnu.setAttribute("class", "menu menuOpen");
+        btn.style.opacity = "0";
+        cvr.style.opacity = "1";
+        menuOpen = true;
     }
-}
-function closeMenu(mnu, tog, cvr) {
-    mnu.setAttribute("class", "mainNav");
-    cvr.setAttribute("class", "cover");
-    tog.setAttribute("class", "menuTog");
-    tog.style.opacity = "1";
-    tog.dataset.state = "close";
-    setTimeout(function(){
-        cvr.style.display = "none";
-    }, 300)
-}
-function openMenu(mnu, tog, cvr) {
-    mnu.setAttribute("class", "mainNav mainNavOpen")
-    cvr.setAttribute("class", "cover coverOn");
-    tog.style.opacity = "0";
-    tog.dataset.state = "open"
-}
-
-/*Adds padding to top of header so header content is positioned correct*/
-function navBarBackFill() {
-    var navBar = document.getElementById("navBar"),
-        header = document.getElementById("header");
-    header.style.paddingTop = navBar.offsetHeight + "px";
-    return navBar.offsetHeight;
 }

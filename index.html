@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
         <title>2018 North Yearbook</title>
@@ -12,85 +12,53 @@
         <link rel="icon" href="media/icon.ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     </head>
-	<body>
-		<div class="header" id="header">
-			<div class="navBar" id="navBar">
-				<div class="cover" id="cover" onmousedown="menuItemSelect(this.id)"></div>
-				<button class="menuTog" onmousedown="menuItemSelect(this.id)" id="menuTog" data-state="close">
-					<div class="menuTogBar"></div>
-					<div class="menuTogBar"></div>
-					<div class="menuTogBar"></div>
-				</button>
-				<div class="pageName">
-					2018 North Yearbook
-				</div>
-				<div class="mainNav" id="mainNav">
-					<button class="navButton" id="navButton1" data-page="html/seniors.html"
-							onmousedown="menuItemSelect(this.id)">
-						Seniors
-						<hr/>
-					</button>
-					<button class="navButton" id="navButton2" data-page="html/juniors.html"
-							onmousedown="menuItemSelect(this.id)">
-						Juniors
-						<hr/>
-					</button>
-					<button class="navButton" id="navButton3" data-page="html/sophomores.html"
-							onmousedown="menuItemSelect(this.id)">
-						Sophomores
-						<hr/>
-					</button>
-					<button class="navButton" id="navButton4" data-page="html/freshmen.html"
-							onmousedown="menuItemSelect(this.id)">
-						Freshmen
-						<hr/>
-					</button>
-					<button class="navButton" id="navButton5" data-page="html/staff.html"
-							onmousedown="menuItemSelect(this.id)">
-						Staff
-						<hr/>
-					</button>
-				</div>
-			</div>
-			<div class="headerContent">
-				<button class="searchButtonBtn" onmousedown="toggleSearch(this.id)" id="searchTog">
-					<img src="media/searchIcon.png"/>
-				</button>
-				<div class="studentSearchBox" id="searchBox">
-					<div class="studentSearchBoxes">
-						<input placeholder="First Name" id="firstNameSearch"type="text"/>
-						<input placeholder="Last Name" id="lastNameSearch"type="text"/>
-					</div>
-					<button class="searchButton" onmousedown="toggleSearch(this.id)" id="cancelSearch">
-						Close
-						<hr/>
-					</button>
-                    <button class="searchButton" onmousedown="toggleSearch(this.id)" id="searchBtn">
-						Search
-						<hr/>
-					</button>
-				</div>
-				<div class="searchResultSections">
-                    <span class="searchResultSecTitle">
-                        Student: <span id="searchResultExact"></span>
-                    </span>
-                    <div class="searchResultImgs" id="searchResultExactImgCont"></div>
+    <body id="body">
+        <div id="cover" onmousedown="menuItemSelect(this.id)"></div>
+        <div class="topBar" id="topBar">
+            <div class="toolBar" id="toolBar">
+                <button id="backBtn" class="button TBButton" onmousedown="backBtn(this.id, 250)">
+                    BACK<hr/>
+                </button>
+                <div style="text-align: right; flex: 1;">
+                    <div class="button TBButton" id="menuTog" onmousedown="menuItemSelect(this.id)">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
-                <div class="searchResultSections">
-                    <span class="searchResultSecTitle">
-                        Student(s) with first name: <span id="searchResultFirst"></span>
-                    </span>
-                    <div class="searchResultImgs" id="searchResultFirstImgCont"></div>
+            </div>
+            <div class="topBarName" id="topBarName">
+                2018 North Yearbook
+            </div>
+            <div class="menu" id="menu">
+                <div class="menuMainBtns">
+                    <button class="button menuBtn" id="menuBtn1" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/seniors.html">
+                        Seniors<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn2" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/juniors.html">
+                        Juniors<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn3" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/sophomores.html">
+                        Sophomores<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn4" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/freshmen.html">
+                        Freshmen<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn5" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/staff.html">
+                        Staff<hr/>
+                    </button>
                 </div>
-                <div class="searchResultSections">
-                    <span class="searchResultSecTitle">
-                        Student(s) with last name: <span id="searchResultLast"></span>
-                    </span>
-                    <div class="searchResultImgs" id="searchResultLastImgCont"></div>
-                </div>
-			</div>
-		</div>
-	</body>
+            </div>
+        </div>
+        </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br></br>hi
+    </body>
 </html>

@@ -2,176 +2,206 @@ html, body {
     margin: 0px;
     padding: 0px;
     font-family: "Quicksand";
+    overflow-x: hidden;
 }
 hr {
-    border: 0px;
-    height: 2px;
-    background-color: black;
     margin: 0px;
     padding: 0px;
-    display: block;
+    border: None;
+    height: 2px ;
+    background-color: rgba(120, 170, 215, 1);
+    transform: rotateY(90deg);
     transition: all 250ms ease-in-out;
-    transform: rotate3d(0, 1, 0, 90deg) /*change 2nd value: 1 for invisible, 0 for visible*/
 }
 * {
-    outline: none;
+    outline: None;
 }
-a, a:visited, a:active {
-    color: blue;
+/*General Button Styles*/
+.button, .TBButton {
+    border: None;
+    background-color: transparent;
+    color: rgba(225, 225, 225, 1);
+    font-size: 17px;
+    font-family: "Roboto";
+    font-weight: 400;
     cursor: pointer;
+    z-index: 1;
+    transition: all 250ms ease-in-out;
+    position: relative;
 }
-.cover {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    z-index: 8;
-    display: none;
-    transform: scale(1);
-    transition: all 300ms ease-in-out;
+.button:hover {
+    color: white;
 }
-.header {
+.button:hover > hr {
+    transform: rotateY(0deg);
+}
+.buttonClicked {
+    background-color: rgba(120, 170, 215, 1) !important;
+    transform: scale(1.1) !important;
+    color: black !important;
+}
+.topBar {
+    height: 30vh;
+    width: 100wh;
     background-image: url("http://chrisvasterling.github.io/delongyearbooks/Files/Images/Other/Background/bk1.JPG");
-    background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    padding-bottom: 10px;
-    overflow: auto;
+    position: relative;
 }
-.navBar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    display: block;
+.topBarName {
+    font-size: 35px;
+    color: white;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 10px 10px 10px 40px;;
+    position: relative;
+    width: 35%;
+    min-width: 400px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.menu {
     width: 100%;
     background-color: rgba(0, 0, 0, .6);
-    color: white;
-    border-bottom-width: 1px;
-    border-bottom-color: white;
-    border-bottom-style: solid;
-    display: flex;
-    z-index: 1;
-    align-items: center;
+    position: absolute;
+    bottom: 0px;
 }
-.menuTog {
-    height: 55px;
-    width: 55px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 9;
-    text-align: center;
-    display: none;
-    background-color: rgba(120, 170, 215, .2);
-    border: 2px solid black;
-    cursor: pointer;
-    transition: all 300ms ease-in;
-    transform: scale(1);
-}
-.menuTogBar {
-    height: 3px;
-    width: 85%;
-    position: relative;
-    left: calc(15% / 2);
-    margin: 7px 0px 7px 0px;
-    display: block;
-    background-color: white;
-}
-.pageName {
-    font-family: "Quicksand";
-    font-size: 25px;
-    padding: 10px;
+.menuMainBtns {
+    padding-left: 40px;
+    padding-right: 40px;
     display: inline-block;
 }
-.mainNav {
-    display: inline-block;
-    flex: 1;
-    justify-content: flex-end;
-    display: flex;
-    align-items: center;
-    z-index: 10;
-    padding: 10px;
-    transform: scale(1);
-}
-.menuTogClicked {
-    background-color: rgba(120, 170, 215, 1) !important;
-    border-color: rgba(120, 170, 215, 1) !important;
-}
-.navButton {
-    font-family: "Roboto";
-    font-size: 15px;
-    color: white;
-    padding: 15px 10px 15px 10px;
-    margin: 0px 5px 0px 5px;
+.menuBtn {
+    margin: 0px 10px 0px 10px;
     min-width: 75px;
-    border: 2px solid transparent;
-    border-right: None;
-    border-left: None;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
+    padding: 15px 5px 15px 5px;
 }
-.navButton:hover, .searchButtonBtn:hover, .searchButton:hover {
-    background-color: rgba(120, 170, 215, .2);
-    border-color: white;
+.button::before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: "";
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: rotateY(90deg);
+    opacity: 0;
+    background-color: rgba(120, 170, 215, .25);
+    transition: all 250ms ease-in-out;
 }
-.navButtonClicked {
-    background-color: rgba(120, 170, 215, 1) !important;
-    border-color: rgba(120, 170, 215, 1) !important;
+.button:hover::before {
+    opacity: 1;
+    transform: rotateY(0deg);
+    box-shadow: 0px 0px 10px black;
 }
-.navButton > hr {
-    background-color: rgba(215, 10, 45, .8);
+.toolBar {
+    display: none;
 }
-.navButton:hover > hr {
-    transform: rotate3d(0, 0, 0, 90deg)
+.TBButton {
+    position: relative;
+    vertical-align: middle;
 }
-/*Rebuild if flex is not supported @support flex thing*/
-@media screen and (max-width: 800px) {
-    .navBar {
-        box-shadow: 0px 0px 10px black;
-        border: 0px;
-    }
-    .menuTog {
+.TBButtonClicked > div:nth-child(1) {
+    background-color: white !important;
+}
+.TBButtonClicked > div:nth-child(2) {
+    background-color: blue !important;
+}
+.TBButtonClicked > div:nth-child(3) {
+    background-color: red !important;
+}
+.TBButtonClicked > div {
+    height: 8px !important;
+    width: 35px !important;
+    margin: 0px 3px 0px 3px !important;
+}
+#backBtn {
+    padding: 10px;
+    display: none;
+}
+#menuTog {
+    position: relative;
+    padding: 7px 2px 7px 2px;
+    margin-right: 30px;
+    display: inline-block;
+}
+#menuTog > div {
+    height: 3px;
+    width: 25px;
+    margin: 5px 10px 5px 10px;
+    background-color: white;
+    transition: all 250ms ease-in-out;
+}
+#menuTog::before {
+    transform: scale(.25) !important;
+}
+#menuTog:hover::before {
+    transform: scale(1) !important;
+}
+#cover {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    opacity: 0;
+    z-index: 3;
+    transition: all 200ms ease-in-out;
+}
+@media screen and (max-width: 700px) {
+    .toolBar {
         display: block;
-    }
-    .mainNav {
         position: fixed;
         top: 0px;
-        right: 0px;
-        height: calc(100% - 20px); /*20px for top/bottom padding*/
-        width: 300px;
-        right: -320px;
-        max-width: 80%;
-        background-color: rgba(0, 0, 0, .75);
-        display: block;
+        left: 0px;
+        width: 100%;
+        line-height: 40px;
+        background-color: rgba(0, 0, 0, .9);
+        box-shadow: 0px 5px 10px black;
+        padding: 5px 10px 5px 10px;
+        z-index: 2;
+    }
+    .topBar {
+        height: 35vh;
+    }
+    .topBarName {
+        border-radius: 0px;
+        width: 100%;
         text-align: center;
-        overflow-y: auto;
+        min-width: None;
+        padding: 10px 0px 10px 0px;
+        box-shadow: 0px 5px 10px black;
+    }
+    .menu {
+        position: fixed;
+        top: 0px;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        max-width: 75%;
+        background-color: rgba(0, 0, 0, .8);
+        box-shadow: 0px 0px 0px black;
         transition: all 300ms ease-in-out;
+        z-index: 3;
     }
-    .mainNavOpen {
-        box-shadow: 0px 0px 10px black;
-        right: 0px;
+    .menuOpen {
+        right: 0px !important;
+        box-shadow: -5px 0px 10px black !important;
     }
-    .navButton {
-        margin: 5px 10px 5px 10px;
+    .menuMainBtns {
+        padding: 0px;
+        text-align: center;
+    }
+    .menuBtn {
         display: inline-block;
-        width: calc(80% - 20px);
-        font-size: 17px;
-        padding: 10px;
-        border: 2px solid transparent;
-        border-top: None;
-        border-bottom: None;
+        width: 80%;
+        margin: 5px 15px 5px 15px;;
     }
-    .navButton:hover {
-        background-color: transparent;
-        border-color: transparent;
-    }
-    .navButtonClicked {
-        background-color: rgba(120, 170, 215, .2) !important;
-        border-color: rgba(120, 170, 215, 1) !important;
-    }
-    .coverOn {
-        background-color: rgba(0, 0, 0, .5);
+    @supports (flex: 1) {
+        .toolBar {
+            display: flex;
+        }
+        #backBtn {
+            display: block;
+        }
     }
 }
