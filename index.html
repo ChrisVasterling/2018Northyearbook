@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
 	<head>
         <title>2018 North Yearbook</title>
         <link rel="stylesheet" href="css/main.css"/>
@@ -56,6 +56,61 @@
                     </button>
                 </div>
             </div>
+        </div>
+        <div class="searchWindow" id="searchWindow">
+            <div class="searchWindowBKBar"></div>
+            <div class="searchWindowBKBar"></div>
+            <div class="searchWindowBKBar"></div>
+            <div class="searchBox">
+                <div class="searchNav">
+                    <div class="searchNavBoxes">
+                        <div class="button searchTextBox" id="searchTextBox1" onmousedown="selectSearchTextBox(this.id)" onmouseleave="leaveSearchTextBox(this.id)">
+                            <input type="text" placeholder="First Name" id="searchTextBox1Input"/><hr>
+                        </div>
+                        <div class="button searchTextBox" id="searchTextBox2" onmousedown="selectSearchTextBox(this.id)" onmouseleave="leaveSearchTextBox(this.id)">
+                            <input type="text" placeholder="Last Name" id="searchTextBox2Input"/><hr>
+                        </div>
+                    </div>
+                    <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="searchRefineBtn">
+                        Refine<hr/>
+                    </button>
+                    <button class="button searchButton">Search<hr/></button>
+                </div>
+                <hr style="transform: rotateY(0deg); margin: 5px;"/>
+                <div id="searchRefineItems">
+                    <div style="width: 100%; background-color: black">
+                        <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="closeRefine">
+                            Close Refine<hr/>
+                        </button>
+                    </div>
+                    
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="refCB1">
+                        <div class="CBbox"><div class="CBboxInner" id="refCB1Inner"></div></div>
+                        <div class="CBtext">Match Full Name</div>
+                    </div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="refCB2">
+                        <div class="CBbox"><div class="CBboxInner" id="refCB2Inner"></div></div>
+                        <div class="CBtext">Match First Name Only</div>
+                    </div>
+                    
+                    
+                    <hr style="transform: rotateY(0deg); margin: 5px;"/>
+                </div>
+                search will NOT work
+                <div style="position: absolute; left: 0px; bottom: 0px; width: 100%; background-color: black">
+                    <button class="button searchButton" onmousedown="toggleSearch(this.id)" id="blah">
+                        Close<hr/>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <button class="button openSearchBtn" id="openSearch" onmousedown=toggleSearch(this.id)>
+                Find People
+                <hr/>
+            </button>
+            <br/>
+            Quick Links Here
         </div>
         </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>

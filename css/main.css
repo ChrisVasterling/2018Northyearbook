@@ -40,9 +40,11 @@ hr {
     transform: scale(1.1) !important;
     color: black !important;
 }
+
 .topBar {
     height: 30vh;
     width: 100wh;
+    min-height: 200px;
     background-image: url("http://chrisvasterling.github.io/delongyearbooks/Files/Images/Other/Background/bk1.JPG");
     background-size: cover;
     background-position: center center;
@@ -101,13 +103,13 @@ hr {
     vertical-align: middle;
 }
 .TBButtonClicked > div:nth-child(1) {
-    background-color: white !important;
+    background-color: rgb(255, 255, 255) !important;
 }
 .TBButtonClicked > div:nth-child(2) {
-    background-color: blue !important;
+    background-color: rgb(0, 57, 166) !important;
 }
 .TBButtonClicked > div:nth-child(3) {
-    background-color: red !important;
+    background-color: rgb(213, 43, 30) !important;
 }
 .TBButtonClicked > div {
     height: 8px !important;
@@ -147,6 +149,147 @@ hr {
     z-index: 3;
     transition: all 200ms ease-in-out;
 }
+
+.openSearchBtn {
+    background-color: rgba(0, 0, 0, .8);
+    height: auto;
+    display: inline-block;
+    margin: 15px;
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+}
+.searchWindow {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(100, 100, 100, .6);
+    z-index: 100;
+    opacity: 0;
+    display: none;
+    transition: all 300ms ease-in-out;
+    text-align: center;
+    color: white;
+}
+.searchWindowBKBar {
+    height: calc(100% / 3);
+    width: 100%;
+    position: absolute;
+}
+.searchWindowBKBar:nth-child(1) {
+    background-color: rgba(255, 255, 255, .15);
+    top: 0px;
+}
+.searchWindowBKBar:nth-child(2) {
+    background-color: rgba(0, 57, 166, .15);
+    top: calc(100%/3);
+}
+.searchWindowBKBar:nth-child(3) {
+    background-color: rgba(213, 43, 30, .15);
+    bottom: 0px;
+}
+.searchNavBoxes {
+    display: flex;
+}
+.searchBox {
+    max-width: calc(90% - 20px);
+    width: 700px;
+    height: calc(100% - 40px);
+    background-color: rgba(0, 0, 0, .8);
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    top: 10px;
+}
+.searchButton {
+    padding: 5px 10px 5px 10px !important;
+    margin: 5px;
+}
+.searchTextBox {
+    padding: 10px;
+    margin: 5px;
+    flex: 1;
+}
+.searchTextBox > hr {
+    transform: rotateY(0deg) !important;
+}
+.searchTextBoxClicked {
+    background-color: rgba(120, 170, 215, 1) !important;
+}
+.searchTextBox > input {
+    width: 100%;
+    padding: 5px;
+    margin: 0px;
+    border: None;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    font-family: "Roboto";
+}
+.searchTextBoxClicked > input {
+    color: black !important;
+}
+#searchRefineItems {
+    opacity: 0;
+    display: none;
+    transition: all 250ms ease-in-out;
+    position: relative;
+    padding: 5px;
+}
+
+.CBcontainer {
+    display: inline-block;
+    font-family: "Roboto";
+    min-height: 15px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 0px;
+}
+.CBbox {
+    position: relative;
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    border: 2px solid rgba(120, 170, 215, 1);
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    transition: all 250ms ease-in-out;
+}
+.CBboxInner {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(120, 170, 215, 0);
+    transition: all 250ms ease-in-out;
+}
+.CBboxInnerChecked {
+    background-color: rgba(120, 170, 215, 1);
+}
+.CBtext {
+    position: relative;
+    line-height: 15px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 0px;
+    font-size: 15px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.content {
+    text-align: center;
+}
 @media screen and (max-width: 700px) {
     .toolBar {
         display: block;
@@ -167,8 +310,8 @@ hr {
         border-radius: 0px;
         width: 100%;
         text-align: center;
-        min-width: None;
-        padding: 10px 0px 10px 0px;
+        min-width: 0px;
+        padding: 10px;
         box-shadow: 0px 5px 10px black;
     }
     .menu {
@@ -182,6 +325,7 @@ hr {
         box-shadow: 0px 0px 0px black;
         transition: all 300ms ease-in-out;
         z-index: 3;
+        overflow-y: auto;
     }
     .menuOpen {
         right: 0px !important;
@@ -195,6 +339,24 @@ hr {
         display: inline-block;
         width: 80%;
         margin: 5px 15px 5px 15px;;
+    }
+    .searchTextBox {
+        padding: 5px;
+    }
+    .searchTextBox > input {
+        font-size: 17px;
+    }
+    .searchWindowBKBar:nth-child(1) {
+        background-color: rgba(255, 255, 255, .25);
+        top: 0px;
+    }
+    .searchWindowBKBar:nth-child(2) {
+        background-color: rgba(0, 57, 166, .25);
+        top: calc(100%/3);
+    }
+    .searchWindowBKBar:nth-child(3) {
+        background-color: rgba(213, 43, 30, .25);
+        bottom: 0px;
     }
     @supports (flex: 1) {
         .toolBar {

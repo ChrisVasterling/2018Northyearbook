@@ -8,6 +8,16 @@ window.addEventListener("load", function(){
 window.addEventListener("resize", function(){
     setTopBarName()
 })
+window.addEventListener("mousedown", function(){
+    if (searchOpen) {
+        // triggered only if a box was selected and the clicked position was not the current box again
+        if ((leavingSearchBoxId != null)&&(activeSearchBoxId != leaveSearchTextBox)) {
+            //console.log(leavingSearchBoxId)
+            document.getElementById(leavingSearchBoxId).setAttribute("class", "button searchTextBox");
+            leavingSearchBoxId = null
+        }
+    }
+})
 function setTopBarName() {
     var TB = document.getElementById("topBar"),
         TBN = document.getElementById("topBarName"),
@@ -59,6 +69,7 @@ function JSLink(IntExt, page, delay) {
 var menuOpen = false;
 function toggleMenu(btn, cvr) {
     var mnu = document.getElementById("menu");
+    toggleBodyScroll();
     if (menuOpen) {
         mnu.setAttribute("class", "menu");
         btn.setAttribute("class", "button TBButton");
@@ -74,4 +85,102 @@ function toggleMenu(btn, cvr) {
         cvr.style.opacity = "1";
         menuOpen = true;
     }
+}
+var searchOpen = false;
+function toggleSearch(id) {
+    var oBtn = document.getElementById(id),
+        SW = document.getElementById("searchWindow");
+    toggleBodyScroll()
+    if (searchOpen) {
+        // things to do when closing search
+        oBtn.setAttribute("class", "button searchButton buttonClicked");
+        setTimeout(function(){
+            SW.style.opacity = "0";
+            setTimeout(function(){
+                SW.style.display = "none";
+                oBtn.setAttribute("class", "button searchButton");
+            }, 300)
+        }, 250)
+        searchOpen = false;
+    } else {
+        // things to do when opening search
+        oBtn.setAttribute("class", "button openSearchBtn buttonClicked");
+        SW.style.display = "block";
+        setTimeout(function(){
+            SW.style.opacity = "1";
+            oBtn.setAttribute("class", "button openSearchBtn");
+        }, 300)
+        searchOpen = true;
+    }
+    
+}
+var bodyScroll = true;
+function toggleBodyScroll(){
+    var b = document.getElementById("html");
+    if (bodyScroll) {
+        b.style.overflowY = "hidden";
+        bodyScroll = false
+    } else {
+        b.style.overflowY = "auto";
+        bodyScroll = true
+    }
+}
+var activeSearchBoxId = null;
+function selectSearchTextBox(boxID) {
+    var box = document.getElementById(boxID);
+    activeSearchBoxId = boxID;
+    box.setAttribute("class", "button searchTextBox searchTextBoxClicked");
+}
+var leavingSearchBoxId = null;
+function leaveSearchTextBox(id) {
+    if (activeSearchBoxId == id) { 
+        leavingSearchBoxId = id;
+    }
+}
+var refineOpen = false;
+function toggleRefine(id) {
+    var btn = document.getElementById(id),
+        refBtn = document.getElementById("searchRefineBtn"),
+        refBox = document.getElementById("searchRefineItems");
+    if (refineOpen) {
+        refBtn.setAttribute("class", "button searchButton");
+        btn.setAttribute("class", "button buttonClicked searchButton")
+        setTimeout(function(){
+            refBtn.style.display = "inline-block";
+            refBox.style.opacity = "0";
+            setTimeout(function(){
+                refBtn.style.opacity = "1";
+                refBox.style.display = "none";
+                btn.setAttribute("class", "button searchButton");
+            }, 250)
+        }, 250)
+        refineOpen = false;
+    } else {
+        btn.setAttribute("class", "button buttonClicked searchButton");
+        refBox.style.display = "block";
+        setTimeout(function(){
+            btn.style.opacity = "0";
+            refBox.style.opacity = "1";
+            setTimeout(function(){
+                btn.style.display = "none";
+            }, 250)
+        }, 250)
+        refineOpen = true;
+    }
+}
+
+function toggleCB(id) {
+    var CB = document.getElementById(id).dataset,
+        CBinner = document.getElementById(id + "Inner");
+    if (CB.state.toLowerCase() == "unchecked") {
+        CBinner.setAttribute("class", "CBboxInner CBboxInnerChecked");
+        CB.state = "checked";
+    } else if (CB.state.toLowerCase() == "checked") {
+        CBinner.setAttribute("class", "CBboxInner");
+        CB.state = "unchecked";     
+    }
+}
+function getCBstate(id) {
+    var CB = document.getElementById(id).dataset.state;
+    return CB;
 }
