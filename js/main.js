@@ -8,16 +8,6 @@ window.addEventListener("load", function(){
 window.addEventListener("resize", function(){
     setTopBarName()
 })
-window.addEventListener("mousedown", function(){
-    if (searchOpen) {
-        // triggered only if a box was selected and the clicked position was not the current box again
-        if ((leavingSearchBoxId != null)&&(activeSearchBoxId != leaveSearchTextBox)) {
-            //console.log(leavingSearchBoxId)
-            document.getElementById(leavingSearchBoxId).setAttribute("class", "button searchTextBox");
-            leavingSearchBoxId = null
-        }
-    }
-})
 function setTopBarName() {
     var TB = document.getElementById("topBar"),
         TBN = document.getElementById("topBarName"),
@@ -66,6 +56,7 @@ function JSLink(IntExt, page, delay) {
         }
     }, delay)
 }
+
 var menuOpen = false;
 function toggleMenu(btn, cvr) {
     var mnu = document.getElementById("menu");
@@ -86,6 +77,7 @@ function toggleMenu(btn, cvr) {
         menuOpen = true;
     }
 }
+
 var searchOpen = false;
 function toggleSearch(id) {
     var oBtn = document.getElementById(id),
@@ -93,7 +85,7 @@ function toggleSearch(id) {
     toggleBodyScroll()
     if (searchOpen) {
         // things to do when closing search
-        oBtn.setAttribute("class", "button searchButton buttonClicked");
+        oBtn.setAttribute("class", "button buttonClicked searchButton");
         setTimeout(function(){
             SW.style.opacity = "0";
             setTimeout(function(){
@@ -108,12 +100,15 @@ function toggleSearch(id) {
         SW.style.display = "block";
         setTimeout(function(){
             SW.style.opacity = "1";
-            oBtn.setAttribute("class", "button openSearchBtn");
-        }, 300)
+            setTimeout(function(){
+                oBtn.setAttribute("class", "button openSearchBtn");
+            }, 300)
+        }, 250)
         searchOpen = true;
     }
     
 }
+
 var bodyScroll = true;
 function toggleBodyScroll(){
     var b = document.getElementById("html");
@@ -125,24 +120,25 @@ function toggleBodyScroll(){
         bodyScroll = true
     }
 }
-var activeSearchBoxId = null;
-function selectSearchTextBox(boxID) {
+
+function toggleSearchTextBox(boxID) {
     var box = document.getElementById(boxID);
-    activeSearchBoxId = boxID;
-    box.setAttribute("class", "button searchTextBox searchTextBoxClicked");
-}
-var leavingSearchBoxId = null;
-function leaveSearchTextBox(id) {
-    if (activeSearchBoxId == id) { 
-        leavingSearchBoxId = id;
+    if (box.dataset.state.toLowerCase() == "off") {
+        box.setAttribute("class", "button searchTextBox searchTextBoxClicked");
+        box.dataset.state = "on";
+    } else {
+        box.setAttribute("class", "button searchTextBox");
+        box.dataset.state = "off";
     }
 }
+
 var refineOpen = false;
 function toggleRefine(id) {
     var btn = document.getElementById(id),
         refBtn = document.getElementById("searchRefineBtn"),
         refBox = document.getElementById("searchRefineItems");
     if (refineOpen) {
+        // closing refine
         refBtn.setAttribute("class", "button searchButton");
         btn.setAttribute("class", "button buttonClicked searchButton")
         setTimeout(function(){
@@ -152,10 +148,12 @@ function toggleRefine(id) {
                 refBtn.style.opacity = "1";
                 refBox.style.display = "none";
                 btn.setAttribute("class", "button searchButton");
+                runSearch();
             }, 250)
         }, 250)
         refineOpen = false;
     } else {
+        // opening refine
         btn.setAttribute("class", "button buttonClicked searchButton");
         refBox.style.display = "block";
         setTimeout(function(){
@@ -183,4 +181,87 @@ function toggleCB(id) {
 function getCBstate(id) {
     var CB = document.getElementById(id).dataset.state;
     return CB;
+}
+
+
+function triggerSearch(btnID) {
+    var btn = document.getElementById(btnID);
+    btn.setAttribute("class", "button buttonClicked searchButton");
+    setTimeout(function(){
+        setTimeout(function(){
+            
+            btn.setAttribute("class", "button searchButton");
+        }, 250)
+        runSearch()
+    }, 250)
+}
+var studentPageList = [
+    ["", "", ["10"]],
+    ["first", "last", ["1", "2"]],
+    ["chris", "last", ["3"]],
+    ["billy", "last", ["4"]],
+    ["first", "last", ["5"]],
+    ["first", "lool", ["6", "7"]]
+]
+function runSearch() {
+    var firstName = document.getElementById("searchTextBox1Input").value.toLowerCase(), 
+        lastName = document.getElementById("searchTextBox2Input").value.toLowerCase(),
+        matchExact = [],
+        matchFirst = [],
+        matchLast = [],
+        student;
+    for (student in studentPageList) {
+        if ((studentPageList[student][0] == firstName)&&(studentPageList[student][1] == lastName)) {
+            // If the first name AND the last name is in the list we found the person
+            matchExact.push(studentPageList[student])
+        }
+        if (studentPageList[student][0] == firstName) {
+            // student(s) with first name __
+            matchFirst.push(studentPageList[student]);
+        }
+        if (studentPageList[student][1] == lastName) {
+            // student(s) with last name __
+            matchLast.push(studentPageList[student]);
+        }
+    }
+    
+    buildSearchResults((firstName + " " + lastName), matchExact, "searchResultFull");
+    buildSearchResults(firstName, matchFirst, "searchResultFirst");
+    buildSearchResults(lastName, matchLast, "searchResultLast");
+}
+function buildSearchResults(name, nameList, destID) {
+    var finalDest = document.getElementById(destID),
+        pageNumDest = document.getElementById(destID + "Pages"),
+        destName = document.getElementById(destID + "Name"),
+        refCB = destID + "CB";
+    pageNumDest.innerHTML = "";
+    if (getCBstate(refCB).toLowerCase() == "checked") {
+        finalDest.style.display = "block";
+        destName.innerHTML = name;
+        // build layout here
+        for (var s in nameList) {
+            for (var p in nameList[s][2]) {
+                var img = document.createElement("img"); // this is the button to select a search result page
+                img.setAttribute("id", "SRP" + nameList[s][2][p]);
+                img.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
+                img.setAttribute("class", "searchResultSectionImg");
+                img.setAttribute("onmousedown", "openSearchImg(this.id)");
+                // pageDistanceFromHome is determined in script element on a page by page basis
+                img.src= pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg"; // change to _small.jpg
+                img.alt = "Page: " + nameList[s][2][p]
+                pageNumDest.appendChild(img);
+            }
+        }
+    } else {
+        finalDest.style.display = "none";
+    }
+}
+function openSearchImg(imgID) {
+    var img = document.getElementById(imgID),
+        link = document.getElementById(imgID).dataset.page;
+    img.setAttribute("class", "searchResultSectionImg searchResultSectionImgClicked");
+    JSLink("newtab", link, 500)
+    setTimeout(function(){
+        img.setAttribute("class", "searchResultSectionImg");
+    }, 500)
 }

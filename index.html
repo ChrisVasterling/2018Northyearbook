@@ -7,7 +7,8 @@
         <script src="js/main.js"></script>
         <script src="js/home.js"></script>
         <script>
-
+            // Other pages will have more ../ to get back to home directory
+            var pageDistanceFromHome = "";
         </script>
         <link rel="icon" href="media/icon.ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -64,17 +65,24 @@
             <div class="searchBox">
                 <div class="searchNav">
                     <div class="searchNavBoxes">
-                        <div class="button searchTextBox" id="searchTextBox1" onmousedown="selectSearchTextBox(this.id)" onmouseleave="leaveSearchTextBox(this.id)">
-                            <input type="text" placeholder="First Name" id="searchTextBox1Input"/><hr>
+                        <div class="button searchTextBox" id="searchTextBox1" data-state="off">
+                            <input type="text" placeholder="First Name" id="searchTextBox1Input" 
+                                   onfocus="toggleSearchTextBox('searchTextBox1')" onblur="toggleSearchTextBox('searchTextBox1')"/>
+                            <hr>
                         </div>
-                        <div class="button searchTextBox" id="searchTextBox2" onmousedown="selectSearchTextBox(this.id)" onmouseleave="leaveSearchTextBox(this.id)">
-                            <input type="text" placeholder="Last Name" id="searchTextBox2Input"/><hr>
+                        <div class="button searchTextBox" id="searchTextBox2" data-state="off">
+                            <input type="text" placeholder="Last Name" id="searchTextBox2Input"
+                                   onfocus="toggleSearchTextBox('searchTextBox2')" onblur="toggleSearchTextBox('searchTextBox2')"/>
+                            <hr>
                         </div>
                     </div>
                     <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="searchRefineBtn">
                         Refine<hr/>
                     </button>
-                    <button class="button searchButton">Search<hr/></button>
+                    <button class="button searchButton" onmousedown="triggerSearch(this.id)" id="searchRunButton">Search<hr/></button>
+                    <button class="button searchButton" onmousedown="toggleSearch(this.id)" id="searchCloseBtn">
+                        Close<hr/>
+                    </button>
                 </div>
                 <hr style="transform: rotateY(0deg); margin: 5px;"/>
                 <div id="searchRefineItems">
@@ -83,24 +91,40 @@
                             Close Refine<hr/>
                         </button>
                     </div>
-                    
-                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="refCB1">
-                        <div class="CBbox"><div class="CBboxInner" id="refCB1Inner"></div></div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="checked" id="searchResultFullCB">
+                        <div class="CBbox"><div class="CBboxInner CBboxInnerChecked" id="searchResultFullCBInner"></div></div>
                         <div class="CBtext">Match Full Name</div>
                     </div>
-                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="refCB2">
-                        <div class="CBbox"><div class="CBboxInner" id="refCB2Inner"></div></div>
-                        <div class="CBtext">Match First Name Only</div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="searchResultFirstCB">
+                        <div class="CBbox"><div class="CBboxInner" id="searchResultFirstCBInner"></div></div>
+                        <div class="CBtext">Match First Name</div>
                     </div>
-                    
-                    
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="searchResultLastCB">
+                        <div class="CBbox"><div class="CBboxInner" id="searchResultLastCBInner"></div></div>
+                        <div class="CBtext">Match Last Name</div>
+                    </div>
                     <hr style="transform: rotateY(0deg); margin: 5px;"/>
                 </div>
-                search will NOT work
-                <div style="position: absolute; left: 0px; bottom: 0px; width: 100%; background-color: black">
-                    <button class="button searchButton" onmousedown="toggleSearch(this.id)" id="blah">
-                        Close<hr/>
-                    </button>
+                <div class="searchResultSection" id="searchResultFull">
+                    <div class="searchResultSectionTitle">
+                        Name: 
+                        <span id="searchResultFullName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultFullPages"></div>
+                </div>
+                <div class="searchResultSection" id="searchResultFirst">
+                    <div class="searchResultSectionTitle">
+                        First Name: 
+                        <span id="searchResultFirstName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultFirstPages"></div>
+                </div>
+                <div class="searchResultSection" id="searchResultLast">
+                    <div class="searchResultSectionTitle">
+                        Last Name: 
+                        <span id="searchResultLastName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultLastPages"></div>
                 </div>
             </div>
         </div>
