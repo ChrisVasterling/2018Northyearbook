@@ -242,7 +242,7 @@ function buildSearchResults(name, nameList, destID) {
         for (var s in nameList) {
             for (var p in nameList[s][2]) {
                 var img = document.createElement("img"); // this is the button to select a search result page
-                img.setAttribute("id", "SRP" + nameList[s][2][p]);
+                img.setAttribute("id", "SRP" + pageNumDest.id + nameList[s][2][p]);
                 img.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
                 img.setAttribute("class", "searchResultSectionImg");
                 img.setAttribute("onmousedown", "openSearchImg(this.id)");

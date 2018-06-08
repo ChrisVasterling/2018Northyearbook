@@ -178,18 +178,6 @@ hr {
     width: 100%;
     position: absolute;
 }
-.searchWindowBKBar:nth-child(1) {
-    background-color: rgba(255, 255, 255, .15);
-    top: 0px;
-}
-.searchWindowBKBar:nth-child(2) {
-    background-color: rgba(0, 57, 166, .15);
-    top: calc(100%/3);
-}
-.searchWindowBKBar:nth-child(3) {
-    background-color: rgba(213, 43, 30, .15);
-    bottom: 0px;
-}
 .searchNavBoxes {
     display: flex;
 }
@@ -262,14 +250,17 @@ hr {
     max-height: 250px;
     max-width: calc(100% - 20px);
     height: auto;
-    padding: 5px 10px 5px 10px;
+    padding: 10px;
+    margin-top: -5px;
     cursor: pointer;
     transition: all 250ms ease-in-out;
 }
+.searchResultSectionImg:hover {
+    background-color: rgba(120, 170, 215, .25)
+}
 .searchResultSectionImgClicked {
-    background-color: rgba(120, 170, 215, .75) !important;
-    transform: scale(1.1);
-    box-shadow: 0px 0px 10px 0px black;
+    background-color: rgba(120, 170, 215, 1) !important;
+    box-shadow: 0px 0px 10px 0px black !important;
 }
 .CBcontainer {
     display: inline-block;
