@@ -60,7 +60,6 @@ function JSLink(IntExt, page, delay) {
 var menuOpen = false;
 function toggleMenu(btn, cvr) {
     var mnu = document.getElementById("menu");
-    toggleBodyScroll();
     if (menuOpen) {
         mnu.setAttribute("class", "menu");
         btn.setAttribute("class", "button TBButton");
@@ -68,9 +67,11 @@ function toggleMenu(btn, cvr) {
         cvr.style.opacity = "0";
         setTimeout(function(){
             cvr.style.display = "none";
+            toggleBodyScroll();
         }, 200)
         menuOpen = false;
     } else {
+        toggleBodyScroll();
         mnu.setAttribute("class", "menu menuOpen");
         btn.style.opacity = "0";
         cvr.style.opacity = "1";
@@ -82,7 +83,6 @@ var searchOpen = false;
 function toggleSearch(id) {
     var oBtn = document.getElementById(id),
         SW = document.getElementById("searchWindow");
-    toggleBodyScroll()
     if (searchOpen) {
         // things to do when closing search
         oBtn.setAttribute("class", "button buttonClicked searchButton");
@@ -91,11 +91,13 @@ function toggleSearch(id) {
             setTimeout(function(){
                 SW.style.display = "none";
                 oBtn.setAttribute("class", "button searchButton");
+                toggleBodyScroll();
             }, 300)
         }, 250)
         searchOpen = false;
     } else {
         // things to do when opening search
+        toggleBodyScroll();
         oBtn.setAttribute("class", "button openSearchBtn buttonClicked");
         SW.style.display = "block";
         setTimeout(function(){
@@ -155,7 +157,7 @@ function toggleRefine(id) {
     } else {
         // opening refine
         btn.setAttribute("class", "button buttonClicked searchButton");
-        refBox.style.display = "block";
+        refBox.style.display = "inline-block";
         setTimeout(function(){
             btn.style.opacity = "0";
             refBox.style.opacity = "1";
@@ -241,15 +243,19 @@ function buildSearchResults(name, nameList, destID) {
         // build layout here
         for (var s in nameList) {
             for (var p in nameList[s][2]) {
-                var img = document.createElement("img"); // this is the button to select a search result page
-                img.setAttribute("id", "SRP" + pageNumDest.id + nameList[s][2][p]);
-                img.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
+                var img = document.createElement("img"), // this is the button to select a search result page
+                    div = document.createElement("div");
                 img.setAttribute("class", "searchResultSectionImg");
-                img.setAttribute("onmousedown", "openSearchImg(this.id)");
                 // pageDistanceFromHome is determined in script element on a page by page basis
                 img.src= pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg"; // change to _small.jpg
                 img.alt = "Page: " + nameList[s][2][p]
-                pageNumDest.appendChild(img);
+                
+                div.setAttribute("class", "searchResultSectionImgCont");
+                div.setAttribute("id", "SRP" + pageNumDest.id + nameList[s][2][p]);
+                div.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
+                div.setAttribute("onmousedown", "openSearchImg(this.id)");
+                div.appendChild(img);
+                pageNumDest.appendChild(div);
             }
         }
     } else {
@@ -259,9 +265,9 @@ function buildSearchResults(name, nameList, destID) {
 function openSearchImg(imgID) {
     var img = document.getElementById(imgID),
         link = document.getElementById(imgID).dataset.page;
-    img.setAttribute("class", "searchResultSectionImg searchResultSectionImgClicked");
+    img.setAttribute("class", "searchResultSectionImgCont searchResultSectionImgContClicked");
     JSLink("newtab", link, 500)
     setTimeout(function(){
-        img.setAttribute("class", "searchResultSectionImg");
+        img.setAttribute("class", "searchResultSectionImgCont");
     }, 500)
 }

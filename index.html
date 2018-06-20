@@ -34,6 +34,10 @@
                 2018 North Yearbook
             </div>
             <div class="menu" id="menu">
+                <div class="menuMobileBtns">
+                    <img src="media/NHSLogo.jpg" class="NHSLogo"/>
+                    <hr style="width: 75%; transform: rotateY(0deg); display: inline-block; margin: 10px 0px 5px 0px;"/>
+                </div>
                 <div class="menuMainBtns">
                     <button class="button menuBtn" id="menuBtn1" 
                             onmousedown="menuItemSelect(this.id)" data-page="html/seniors.html">
@@ -54,6 +58,13 @@
                     <button class="button menuBtn" id="menuBtn5" 
                             onmousedown="menuItemSelect(this.id)" data-page="html/staff.html">
                         Staff<hr/>
+                    </button>
+                </div>
+                <div class="menuMobileBtns">
+                    <hr style="width: 75%; transform: rotateY(0deg); display: inline-block; margin: 5px 0px 5px 0px;"/>
+                    <button class="button menuBtn" id="mobileMenuBtn1" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/EXAMPLE.html">
+                        EXAMPLE<hr/>
                     </button>
                 </div>
             </div>
@@ -83,7 +94,7 @@
                 </div>
                 <hr style="transform: rotateY(0deg); margin: 5px;"/>
                 <div id="searchRefineItems">
-                    <div style="width: 100%; background-color: black">
+                    <div style="width: 100%; background-color: rgba(35, 35, 35, .8)">
                         <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="closeRefine">
                             Close Refine<hr/>
                         </button>
