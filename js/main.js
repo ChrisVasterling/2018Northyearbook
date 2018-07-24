@@ -98,7 +98,7 @@ function toggleSearch(id) {
     } else {
         // things to do when opening search
         toggleBodyScroll();
-        oBtn.setAttribute("class", "button openSearchBtn buttonClicked");
+        oBtn.setAttribute("class", "button openSearchBtn buttonClicked openSearchBtnClicked");
         SW.style.display = "block";
         setTimeout(function(){
             SW.style.opacity = "1";

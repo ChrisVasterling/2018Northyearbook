@@ -16,6 +16,12 @@ hr {
 * {
     outline: None;
 }
+a, a:visited {
+    color: blue;
+    text-decoration: none;
+    font-family: Lato;
+    font-family: "Quicksand"
+}
 /*General Button Styles*/
 .button, .TBButton {
     border: None;
@@ -170,6 +176,14 @@ hr {
     color: white;
     padding: 10px;
 }
+.openSearchBtnClicked::before {
+    opacity: 1;
+    transform: rotateY(0deg);
+    box-shadow: 0px 0px 10px black !important;
+}
+.openSearchBtnClicked > hr {
+    transform: rotateY(0deg);
+}
 .searchWindow {
     position: fixed;
     top: 0px;
@@ -273,12 +287,14 @@ hr {
     left: -10px;
     width: calc(100% + 20px);
     height: calc(100% + 20px);
-    background-color: transparent;
+    background-color: rgb(120, 170, 215, .25);
+    transform: rotateX(90deg);
     transition: all 250ms ease-in-out;
 }
 .searchResultSectionImgCont:hover::before {
     background-color: rgba(120, 170, 215, .25);
     box-shadow: 0px 0px 10px 0px black;
+    transform: rotateX(0deg);
 }
 .searchResultSectionImgContClicked {
     z-index: 10;
@@ -286,15 +302,20 @@ hr {
 .searchResultSectionImgContClicked::before {
     background-color: rgba(120, 170, 215, 1) !important;
     box-shadow: 0px 0px 10px 0px black !important;
-    transform: scale(1.05) !important;
 }
 .searchResultSectionImg {
     max-height: 250px;
     max-width: 100%;
     height: auto;
     position: relative;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px black;
+    transition: all 250ms ease-in-out;
 }
-
+.searchResultSectionImgCont:hover > .searchResultSectionImg {
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px black;
+}
 .CBcontainer {
     display: inline-block;
     font-family: "Roboto";
@@ -348,6 +369,9 @@ hr {
     text-align: center;
 }
 @media screen and (max-width: 700px) {
+    .topBar {
+        background-image: url("https://scontent-ort2-2.xx.fbcdn.net/v/t31.0-8/411282_354228451291978_1028640939_o.jpg?_nc_cat=0&oh=7168533fad9ed3b6a1de5a3240b64f35&oe=5BDF371F")
+    }
     .toolBar {
         display: block;
         position: fixed;
@@ -374,7 +398,6 @@ hr {
     .menu {
         position: fixed;
         top: 0px;
-        right: -250px;
         height: 100%;
         width: 250px;
         max-width: 75%;
@@ -386,10 +409,13 @@ hr {
         overflow-x: hidden;
         text-align: center;
         font-size: 0px;
+        right: -250px;
+        transform: translate3d(0px, 0px, 0px)
     }
     .menuOpen {
         right: 0px !important;
         box-shadow: -5px 0px 10px rgb(35, 35, 35) !important;
+        transform: translate3d(0px, 0px, 0px)
     }
     .menuMainBtns, .menuMobileBtns {
         padding: 0px;

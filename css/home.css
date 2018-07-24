@@ -1,0 +1,53 @@
+/*rgba(0, 0, 0, .6);*/
+.ybSection {
+    width: 70%;
+    position: relative;
+    left: 15%;
+    background-color: rgba(35, 35, 35, .8);
+    text-align: left;
+    display: flex;
+    max-height: 370px;
+}
+.ybSectionImg {
+    font-size: 0px;
+}
+.ybSectionImg > img {
+    position: relative;
+    border-radiud: 15px;
+    max-height: 350px;
+}
+.ybSectionMobileBtn {
+    display: none;
+}
+.ybSectionBtns {
+    background-color: rgba(35, 35, 35, .8);
+    flex: 1;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    overflow-y: auto;
+}
+.ybSectionBtns > hr {
+    transform: rotateY(0deg); 
+    width: 80%;
+    position: relative;
+    left: 10%;
+    margin: 10px 0px 10px 0px;
+}
+.ybSectionBtns > button {
+    padding: 10px 25px 10px 25px;
+    margin: 10px;
+    max-width: calc(100% - 20px);
+    font-size: 20px;
+}
+.ybSectionBtns > span {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.ybSectionBtns > a {
+    font-size: 20px;
+    margin: 5px;
+}
+@media screen and (max-width: 700px) {
+    
+}
