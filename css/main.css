@@ -367,6 +367,8 @@ a, a:visited {
 
 .content {
     text-align: center;
+    position: relative;
+    background-color: rgba(35, 35, 35, .8);
 }
 @media screen and (max-width: 700px) {
     .topBar {
