@@ -3,6 +3,7 @@ html, body {
     padding: 0px;
     font-family: "Quicksand";
     overflow-x: hidden;
+    background-image: url("https://chrisvasterling.github.io/2017Northyearbook/media/background/bk50.jpg");
 }
 hr {
     margin: 0px;
@@ -369,6 +370,7 @@ a, a:visited {
     text-align: center;
     position: relative;
     background-color: rgba(35, 35, 35, .8);
+    padding-bottom: 75px;
 }
 @media screen and (max-width: 700px) {
     .topBar {

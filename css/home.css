@@ -18,14 +18,17 @@
     left: 15%;
     flex-direction: row-reverse;
 }
+.ybSection:last-child {
+    margin-bottom: 0px;
+}
 .ybSectionImg {
     font-size: 0px;
-    max-height: 400px;
+    max-height: 350px;
 }
 .ybSectionImg > img {
     position: relative;
     border-radiud: 15px;
-    max-height: 400px;
+    max-height: 350px;
 }
 .ybSectionBtns {
     flex: 1;
