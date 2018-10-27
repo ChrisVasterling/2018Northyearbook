@@ -9,6 +9,7 @@
         <script>
             // Other pages will have more ../ to get back to home directory
             var pageDistanceFromHome = "";
+            var pageRange = [];
         </script>
         <link rel="icon" href="media/icon.ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -40,23 +41,23 @@
                 </div>
                 <div class="menuMainBtns">
                     <button class="button menuBtn" id="menuBtn1" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/seniors.html">
+                            onmousedown="menuItemSelect(this.id)" data-page="html/faces_of_the_people/classOf2018.html">
                         Seniors<hr/>
                     </button>
                     <button class="button menuBtn" id="menuBtn2" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/juniors.html">
+                            onmousedown="menuItemSelect(this.id)" data-page="html/faces_of_the_people/classOf2019.html">
                         Juniors<hr/>
                     </button>
                     <button class="button menuBtn" id="menuBtn3" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/sophomores.html">
+                            onmousedown="menuItemSelect(this.id)" data-page="html/faces_of_the_people/classOf2020.html">
                         Sophomores<hr/>
                     </button>
                     <button class="button menuBtn" id="menuBtn4" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/freshmen.html">
+                            onmousedown="menuItemSelect(this.id)" data-page="html/faces_of_the_people/classOf2021.html">
                         Freshmen<hr/>
                     </button>
                     <button class="button menuBtn" id="menuBtn5" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/staff.html">
+                            onmousedown="menuItemSelect(this.id)" data-page="html/faces_of_the_people/staff.html">
                         Staff<hr/>
                     </button>
                 </div>
@@ -151,7 +152,8 @@
             <div class="ybSection">
                 <div class="ybSectionImg searchResultSectionImgCont" 
                      data-page="media/pages/193.jpg" id="ybSectionCover"
-                     onmousedown="openYBImg(this.id)">
+                     onmousedown="openYBImg(this.id)"
+                     style="opacity: 1">
                     <img src="media/pages/193_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
@@ -184,7 +186,8 @@
             <div class="ybSection">
                 <div class="ybSectionImg searchResultSectionImgCont" id="fallSectionImg"
                      data-page="media/pages/5.jpg"
-                     onmousedown="openYBImg(this.id)">
+                     onmousedown="openYBImg(this.id)"
+                     style="opacity: 1">
                     <img src="media/pages/5_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
@@ -203,7 +206,8 @@
             <div class="ybSection">
                 <div class="ybSectionImg searchResultSectionImgCont" id="winterSectionImg"
                      data-page="media/pages/97.jpg"
-                     onmousedown="openYBImg(this.id)">
+                     onmousedown="openYBImg(this.id)"
+                     style="opacity: 1">
                     <img src="media/pages/97_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
@@ -224,7 +228,8 @@
             <div class="ybSection">
                 <div class="ybSectionImg searchResultSectionImgCont" id="springSectionImg"
                      data-page="media/pages/163.jpg"
-                     onmousedown="openYBImg(this.id)">
+                     onmousedown="openYBImg(this.id)"
+                     style="opacity: 1">
                     <img src="media/pages/163_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">

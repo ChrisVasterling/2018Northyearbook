@@ -4,6 +4,7 @@ hitting the back arrow to go back a page in the browser*/
 window.addEventListener("unload", function(){})
 window.addEventListener("load", function(){
     setTopBarName()
+    load_displayYBPages()
 })
 window.addEventListener("resize", function(){
     setTopBarName()
@@ -31,9 +32,18 @@ function menuItemSelect(id) {
         }, 300)
     } else if (id == "cover") {
         toggleMenu(document.getElementById("menuTog"), cvr)
+    } else if (id == "classSongButton") { 
+        btn.setAttribute("class", "button menuBtn buttonClicked");
+        JSLink('newtab', page, 500);
+        setTimeout(function(){
+            btn.setAttribute("class", "button menuBtn"); 
+        }, 500)
     } else {
         btn.setAttribute("class", "button menuBtn buttonClicked");
         JSLink('external', page, 500);
+        setTimeout(function(){
+            btn.setAttribute("class", "button menuBtn"); 
+        }, 500)
     }
 }
 function backBtn(id, delay) {
@@ -55,6 +65,33 @@ function JSLink(IntExt, page, delay) {
             window.scrollTo(0, section);
         }
     }, delay)
+}
+
+function load_displayYBPages() {
+    var YBP = document.getElementById("YBPages"), img;
+    for (var i=pageRange[0]; i <= pageRange[1]; i++) {
+        // i is the page number
+        var imgEle = document.createElement("img"),
+            imgEleCont = document.createElement("div"),
+            imagePath = pageDistanceFromHome + "media/pages/" + i;
+        imgEle.setAttribute("src", imagePath + "_small.jpg");
+        imgEle.setAttribute("class", "YBPageImg");
+        imgEleCont.setAttribute("data-page", imagePath + ".jpg");
+        imgEleCont.setAttribute("id", i);
+        imgEleCont.setAttribute("onmousedown", "openYBPage(this.id)");
+        imgEleCont.setAttribute("class", "YBPageCont");
+        imgEleCont.appendChild(imgEle)
+        YBP.appendChild(imgEleCont)
+    }
+    for (var i=pageRange[0]; i <= pageRange[1]; i++) {
+        fadeYBElementIn(i, pageRange)
+    }
+}
+function fadeYBElementIn(num, pages) {
+    var ele = document.getElementById(num);
+    setTimeout(function(element){
+        element.style.opacity = "1";
+    }, 100*(num - pages[0]), element=ele)
 }
 
 var menuOpen = false;
@@ -288,13 +325,25 @@ function buildSearchResults(name, nameList, destID) {
                     div.setAttribute("onmousedown", "openSearchImg(this.id)");
                     div.appendChild(img);
                     pageNumDest.appendChild(div);
+                    
+                    // fading in outer div
+                    fadeSearchElementIn(div.id, p)
                 }
             }
         }
+        
     } else {
         finalDest.style.display = "none";
     }
 }
+function fadeSearchElementIn(id, delayMultiplyer) {
+    var ele = document.getElementById(id);
+    setTimeout(function(element) {
+        element.style.opacity = "1";
+    }, 100*delayMultiplyer, element=ele)
+}
+
+// these 3 function are very similar and can probably be combined into one but i'm too lazy
 function openSearchImg(imgID) {
     var img = document.getElementById(imgID),
         link = document.getElementById(imgID).dataset.page;
@@ -311,5 +360,14 @@ function openYBImg(imgID) {
     JSLink("newtab", link, 500)
     setTimeout(function(){
         img.setAttribute("class", "ybSectionImg searchResultSectionImgCont");
+    }, 500)
+}
+function openYBPage(id) {
+    var img = document.getElementById(id),
+        link = img.dataset.page;
+    img.setAttribute("class", "YBPageCont YBPageContClicked");
+    JSLink("newtab", link, 500);
+    setTimeout(function(){
+       img.setAttribute("class", "YBPageCont"); 
     }, 500)
 }
