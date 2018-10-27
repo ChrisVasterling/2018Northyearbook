@@ -1,0 +1,5 @@
+Resolution: 300
+Compression: Low
+Page Size: Letter 8.5 x 11
+
+Odd Pages - Rotate First

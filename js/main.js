@@ -198,12 +198,42 @@ function triggerSearch(btnID) {
     }, 250)
 }
 var studentPageList = [
-    ["", "", ["10"]],
-    ["first", "last", ["1", "2"]],
-    ["chris", "last", ["3"]],
-    ["billy", "last", ["4"]],
-    ["first", "last", ["5"]],
-    ["first", "lool", ["6", "7"]]
+    ["student", "index", ["184", "185", "186", "187", "188", "189", "190", "191", "192"]],
+    ["andrew", "accola", ["52"]],
+    ["quinnlan", "acker", ["42"]],
+    ["karissa", "ackerman", ["64"]],
+    ["noah", "adsit", ["20", "39", "52", "61"]],
+    ["charlotte", "akervik", ["26", "64", "112", "136"]],
+    ["johannes", "akervik", ["42", "136"]],
+    ["tyler", "albrecht", ["13", "39", "42", "136"]],
+    ["larae", "allrich", ["52"]],
+    ["thomas", "amort", ["74"]],
+    ["isaiah", "amundson", ["38", "42"]],
+    ["phaedra", "amundson", ["52"]],
+    ["melissa", "amyotte", ["146"]],
+    ["melissa", "amyotte-stokes", ["146"]],
+    ["alexzandria", "anderson", ["42"]],
+    ["brody", "anderson", ["64"]],
+    ["alexis", "anderson", ["64"]],
+    ["connor", "anderson", ["22", "74"]],
+    ["elliana", "anderson", ["64"]],
+    ["heidi", "anderson", ["64"]],
+    ["jackie", "anderson", ["42"]],
+    ["jordan", "anderson", ["64"]],
+    ["spencer", "andrews", ["9", "38"]],
+    ["madalyn", "archibald-smith", ["42"]],
+    ["marley", "arel", ["52"]],
+    ["sarah", "arellano", ["37", "52"]],
+    ["hailey", "arneson", ["64", "108", "109", "138"]],
+    ["audrey", "arrington", ["74"]],
+    ["tyler", "arrington", ["74"]],
+    ["keith", "ash", ["146"]],
+    ["monica", "ashby", ["42", "138"]],
+    ["dylan", "ashley", ["39", "52", "140", "141"]],
+    ["devon", "atter", ["52", "141"]],
+    ["kayla", "aubart", ["74", "141"]],
+    ["gavin", "austin", ["64"]],
+    ["kendra", "awe", ["146"]],
 ]
 function runSearch() {
     var firstName = document.getElementById("searchTextBox1Input").value.toLowerCase(), 
@@ -243,19 +273,22 @@ function buildSearchResults(name, nameList, destID) {
         // build layout here
         for (var s in nameList) {
             for (var p in nameList[s][2]) {
-                var img = document.createElement("img"), // this is the button to select a search result page
-                    div = document.createElement("div");
-                img.setAttribute("class", "searchResultSectionImg");
-                // pageDistanceFromHome is determined in script element on a page by page basis
-                img.src= pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg"; // change to _small.jpg
-                img.alt = "Page: " + nameList[s][2][p]
-                
-                div.setAttribute("class", "searchResultSectionImgCont");
-                div.setAttribute("id", "SRP" + pageNumDest.id + nameList[s][2][p]);
-                div.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
-                div.setAttribute("onmousedown", "openSearchImg(this.id)");
-                div.appendChild(img);
-                pageNumDest.appendChild(div);
+                // if the id (and thus page) is alread displayed >>> skip it
+                if (document.getElementById("SRP" + pageNumDest.id + nameList[s][2][p]) == null) {
+                    var img = document.createElement("img"), // this is the button to select a search result page
+                        div = document.createElement("div");
+                    img.setAttribute("class", "searchResultSectionImg");
+                    // pageDistanceFromHome is determined in script element on a page by page basis
+                    img.src= pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + "_small.jpg";
+                    img.alt = "Page: " + nameList[s][2][p]
+
+                    div.setAttribute("class", "searchResultSectionImgCont");
+                    div.setAttribute("id", "SRP" + pageNumDest.id + nameList[s][2][p]);
+                    div.setAttribute("data-page", pageDistanceFromHome + "media/pages/" + nameList[s][2][p] + ".jpg");
+                    div.setAttribute("onmousedown", "openSearchImg(this.id)");
+                    div.appendChild(img);
+                    pageNumDest.appendChild(div);
+                }
             }
         }
     } else {
@@ -269,5 +302,14 @@ function openSearchImg(imgID) {
     JSLink("newtab", link, 500)
     setTimeout(function(){
         img.setAttribute("class", "searchResultSectionImgCont");
+    }, 500)
+}
+function openYBImg(imgID) {
+    var img = document.getElementById(imgID),
+        link = document.getElementById(imgID).dataset.page;
+    img.setAttribute("class", "ybSectionImg searchResultSectionImgCont searchResultSectionImgContClicked");
+    JSLink("newtab", link, 500)
+    setTimeout(function(){
+        img.setAttribute("class", "ybSectionImg searchResultSectionImgCont");
     }, 500)
 }

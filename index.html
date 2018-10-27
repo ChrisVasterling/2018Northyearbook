@@ -84,6 +84,11 @@
                             <hr>
                         </div>
                     </div>
+                    <div style="font-size: 15px">
+                        If there is a problem with a search result contact:
+                        <br/>
+                        senioryearbook@outlook.com
+                    </div>
                     <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="searchRefineBtn">
                         Refine<hr/>
                     </button>
@@ -143,49 +148,67 @@
             </button>
             <br/>
             
-            
             <div class="ybSection">
                 <div class="ybSectionImg searchResultSectionImgCont" 
-                     data-page="media/2018Cover.jpg" id="ybSectionCover">
-                    <img src="media/2018CoverSmall.jpg" class="searchResultSectionImg"/>
+                     data-page="media/pages/193.jpg" id="ybSectionCover"
+                     onmousedown="openYBImg(this.id)">
+                    <img src="media/pages/193_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
                     <span>Class Song</span>
                     <br/>
-                    <a href="https://www.youtube.com/watch?v=AOAtz8xWM0w" target="blank">
-                        Song
-                    </a>
+                    <br/>
+                    All Star - Smash Mouth
+                    <br/>
+                    <br/>
+                    <button class="button" id="classSongButton"
+                            data-page="https://www.youtube.com/watch?v=Je_8A5hurSY"
+                            onmousedown="menuItemSelect(this.id)">
+                        Link (YouTube)
+                        <hr/>
+                    </button>
                     <br/>
                     <hr/>
-                    <span>Class Moto</span>
+                    <span>Class Quote</span>
                     <br/>
                     <br/>
-                    <i>"You never know the true value of a moment until it's gone"</i>
+                    <i>"It's the oldest story in the world. One day you're seventeen and planning for someday. 
+                        And then quietly and without you ever really noticing, someday is today. 
+                        And that someday is yesterday. And this is your life."</i>
                     <br/>
                     <br/>
-                    ~By none other than the <b><i>Seuss</i></b> himself~
+                    ~<b><i>Nathan Scott</i></b>~
                 </div>
             </div>
             
-            
             <div class="ybSection">
-                <div class="ybSectionImg searchResultSectionImgCont">
-                    <img src="media/2018CoverSmall.jpg" class="searchResultSectionImg"/>
+                <div class="ybSectionImg searchResultSectionImgCont" id="fallSectionImg"
+                     data-page="media/pages/5.jpg"
+                     onmousedown="openYBImg(this.id)">
+                    <img src="media/pages/5_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
+                    <span>Fall</span>
+                    <hr/>
                     <button class="button">Fall Sports<hr/></button>
                     <br class="ybButtonBreak"/>
                     <button class="button">Homecoming<hr/></button>
                     <br class="ybButtonBreak"/>
                     <button class="button">Student Life<hr/></button>
+                    <br class="ybButtonBreak"/>
+                    <button class="button">Group Photos<hr/></button>
                 </div>
             </div>
             
             <div class="ybSection">
-                <div class="ybSectionImg searchResultSectionImgCont">
-                    <img src="media/2018CoverSmall.jpg" class="searchResultSectionImg"/>
+                <div class="ybSectionImg searchResultSectionImgCont" id="winterSectionImg"
+                     data-page="media/pages/97.jpg"
+                     onmousedown="openYBImg(this.id)">
+                    <img src="media/pages/97_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
+                    <span>Winter</span>
+                    <hr/>
                     <button class="button">Winter Sports<hr/></button>
                     <br class="ybButtonBreak"/>
                     <button class="button">Dances<hr/></button>
@@ -193,14 +216,20 @@
                     <button class="button">Student Life<hr/></button>
                     <br class="ybButtonBreak"/>
                     <button class="button">Arts<hr/></button>
+                    <br class="ybButtonBreak"/>
+                    <button class="button">Group Photos<hr/></button>
                 </div>
             </div>
             
             <div class="ybSection">
-                <div class="ybSectionImg searchResultSectionImgCont">
-                    <img src="media/2018CoverSmall.jpg" class="searchResultSectionImg"/>
+                <div class="ybSectionImg searchResultSectionImgCont" id="springSectionImg"
+                     data-page="media/pages/163.jpg"
+                     onmousedown="openYBImg(this.id)">
+                    <img src="media/pages/163_small.jpg" class="searchResultSectionImg"/>
                 </div>
                 <div class="ybSectionBtns">
+                    <span>Spring</span>
+                    <hr/>
                     <button class="button">Spring Sports<hr/></button>
                     <br class="ybButtonBreak"/>
                     <button class="button">Prom<hr/></button>
@@ -210,7 +239,6 @@
                     <button class="button">Group Photos<hr/></button>
                 </div>
             </div>
-            
             
         </div>
     </body>

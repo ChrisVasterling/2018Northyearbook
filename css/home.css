@@ -24,6 +24,7 @@
 .ybSectionImg {
     font-size: 0px;
     max-height: 350px;
+    align-self: center;
 }
 .ybSectionImg > img {
     position: relative;
@@ -84,9 +85,6 @@
     }
 }
 @media screen and (max-width: 700px) {
-    .ybButtonBreak {
-        display: block;
-    }
     .ybSectionBtns > button {
         width: calc(100% - 30px);
         max-width: None;
