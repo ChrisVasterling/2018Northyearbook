@@ -4,7 +4,8 @@ hitting the back arrow to go back a page in the browser*/
 window.addEventListener("unload", function(){})
 window.addEventListener("load", function(){
     setTopBarName()
-    load_displayYBPages()
+    load_displayYBPages(pageRange)
+    create_backToTop()
 })
 window.addEventListener("resize", function(){
     setTopBarName()
@@ -66,8 +67,29 @@ function JSLink(IntExt, page, delay) {
         }
     }, delay)
 }
+function create_backToTop() {
+    var body = document.getElementById("body"),
+        btn = document.createElement("button");
+    
+    btn.innerHTML = "Back to Top<hr/>";
+    btn.setAttribute("class", "button totop");
+    btn.setAttribute("id", "backtoptop")
+    btn.setAttribute("onmousedown", "backToTop(this.id)");
+    body.appendChild(btn)
+}
+function backToTop(id) {
+    var btn = document.getElementById(id);
+    btn.setAttribute("class", "button totop buttonClicked");
+    setTimeout(function(){
+        window.scrollTo(0,0)
+        setTimeout(function(){
+            btn.setAttribute("class", "button totop");
+        }, 250)    
+    }, 250)
+}
 
-function load_displayYBPages() {
+
+function load_displayYBPages(pageRange) {
     var YBP = document.getElementById("YBPages"), img;
     for (var i=pageRange[0]; i <= pageRange[1]; i++) {
         // i is the page number

@@ -63,10 +63,6 @@
                 </div>
                 <div class="menuMobileBtns">
                     <hr style="width: 75%; transform: rotateY(0deg); display: inline-block; margin: 5px 0px 5px 0px;"/>
-                    <button class="button menuBtn" id="mobileMenuBtn1" 
-                            onmousedown="menuItemSelect(this.id)" data-page="html/EXAMPLE.html">
-                        EXAMPLE<hr/>
-                    </button>
                 </div>
             </div>
         </div>
@@ -147,6 +143,7 @@
                 Find People
                 <hr/>
             </button>
+            
             <br/>
             
             <div class="ybSection">
@@ -193,13 +190,25 @@
                 <div class="ybSectionBtns">
                     <span>Fall</span>
                     <hr/>
-                    <button class="button">Fall Sports<hr/></button>
+                    <button class="button" id="fallsports" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/fall/sports.html">
+                        Fall Sports<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Homecoming<hr/></button>
+                    <button class="button" id="hoco" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/fall/hoco.html">
+                        Homecoming<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Student Life<hr/></button>
+                    <button class="button" id="falllife" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/fall/life.html">
+                        Student Life<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Group Photos<hr/></button>
+                    <button class="button" id="fallgroup" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/fall/group.html">
+                        Group Photos<hr/>
+                    </button>
                 </div>
             </div>
             
@@ -213,15 +222,30 @@
                 <div class="ybSectionBtns">
                     <span>Winter</span>
                     <hr/>
-                    <button class="button">Winter Sports<hr/></button>
+                    <button class="button" id="wintersports" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/winter/sports.html">
+                        Winter Sports<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Dances<hr/></button>
+                    <button class="button" id="winterdances" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/winter/dances.html">
+                        Dances<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Student Life<hr/></button>
+                    <button class="button" id="winterlife" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/winter/life.html">
+                        Student Life<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Arts<hr/></button>
+                    <button class="button" id="winterarts" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/winter/arts.html">
+                        Arts<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Group Photos<hr/></button>
+                    <button class="button" id="wintergroup" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/winter/group.html">
+                        Group Photos<hr/>
+                    </button>
                 </div>
             </div>
             
@@ -235,16 +259,42 @@
                 <div class="ybSectionBtns">
                     <span>Spring</span>
                     <hr/>
-                    <button class="button">Spring Sports<hr/></button>
+                    <button class="button" id="springsports" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/spring/sports.html">
+                        Spring Sports<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Prom<hr/></button>
+                    <button class="button" id="springprom" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/spring/prom.html">
+                        Prom<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Student Life<hr/></button>
+                    <button class="button" id="sprinflife" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/spring/life.html">
+                        Student Life<hr/>
+                    </button>
                     <br class="ybButtonBreak"/>
-                    <button class="button">Group Photos<hr/></button>
+                    <button class="button" id="springgroup" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/spring/group.html">
+                        Group Photos<hr/>
+                    </button>
                 </div>
             </div>
             
+            <div class="ybSection allphotos">
+                *WARNING*
+                <br/>
+                (For mainly cell phone users)
+                <br/>
+                Opening all the photos will use 15 Megabytes of data
+                <br/>
+                <div class="ybSectionBtns">
+                    <button class="button" id="mobileMenuBtn1" 
+                            onmousedown="menuItemSelect(this.id)" data-page="html/all.html">
+                        All Photos<hr/>
+                    </button>
+                </div>
+            </div>
         </div>
     </body>
 </html>

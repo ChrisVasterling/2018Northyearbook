@@ -20,6 +20,10 @@
 }
 .ybSection:last-child {
     margin-bottom: 0px;
+    text-align: center;
+    display: block;
+    color: rgb(175, 175, 175);
+    left: 10%;
 }
 .ybSectionImg {
     font-size: 0px;
@@ -62,6 +66,7 @@
     font-size: 20px;
     margin: 5px;
 }
+
 @media screen and (max-width: 1000px) {
     .ybSection {
         width: calc(90% - 50px);

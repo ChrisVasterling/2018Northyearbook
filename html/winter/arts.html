@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html id="html">
+	<head>
+        <title>2018 North Yearbook</title>
+        <link rel="stylesheet" href="../../css/main.css"/>
+        <link rel="stylesheet" href="../../css/pages.css"/>
+        <script src="../../js/main.js"></script>
+        <script>
+            // Other pages will have more ../ to get back to home directory
+            var pageDistanceFromHome = "../../";
+            var pageRange = [126, 131]
+        </script>
+        <link rel="icon" href="../../media/icon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    </head>
+    <body id="body">
+        <div id="cover" onmousedown="menuItemSelect(this.id)"></div>
+        <div class="topBar" id="topBar">
+            <div class="toolBar" id="toolBar">
+                <button id="backBtn" class="button TBButton" onmousedown="backBtn(this.id, 250)">
+                    BACK<hr/>
+                </button>
+                <div style="text-align: right; flex: 1;">
+                    <div class="button TBButton" id="menuTog" onmousedown="menuItemSelect(this.id)">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="topBarName" id="topBarName">
+                Arts
+            </div>
+            <div class="menu" id="menu">
+                <div class="menuMobileBtns">
+                    <img src="../../media/NHSLogo.jpg" class="NHSLogo"/>
+                    <hr style="width: 75%; transform: rotateY(0deg); display: inline-block; margin: 10px 0px 5px 0px;"/>
+                </div>
+                <div class="menuMainBtns">
+                    <button class="button menuBtn" id="menuBtn1" 
+                            onmousedown="menuItemSelect(this.id)" data-page="../faces_of_the_people/classOf2018.html">
+                        Seniors<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn2" 
+                            onmousedown="menuItemSelect(this.id)" data-page="../faces_of_the_people/classOf2019.html">
+                        Juniors<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn3" 
+                            onmousedown="menuItemSelect(this.id)" data-page="../faces_of_the_people/classOf2020.html">
+                        Sophomores<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn4" 
+                            onmousedown="menuItemSelect(this.id)" data-page="../faces_of_the_people/classOf2021.html">
+                        Freshmen<hr/>
+                    </button>
+                    <button class="button menuBtn" id="menuBtn5" 
+                            onmousedown="menuItemSelect(this.id)" data-page="../faces_of_the_people/staff.html">
+                        Staff<hr/>
+                    </button>
+                </div>
+                <div class="menuMobileBtns"></div>
+            </div>
+        </div>
+        <div class="searchWindow" id="searchWindow">
+            <div class="searchBox">
+                <div class="searchNav">
+                    <div class="searchNavBoxes">
+                        <div class="button searchTextBox" id="searchTextBox1" data-state="off">
+                            <input type="text" placeholder="First Name" id="searchTextBox1Input" 
+                                   onfocus="toggleSearchTextBox('searchTextBox1')" onblur="toggleSearchTextBox('searchTextBox1')"/>
+                            <hr>
+                        </div>
+                        <div class="button searchTextBox" id="searchTextBox2" data-state="off">
+                            <input type="text" placeholder="Last Name" id="searchTextBox2Input"
+                                   onfocus="toggleSearchTextBox('searchTextBox2')" onblur="toggleSearchTextBox('searchTextBox2')"/>
+                            <hr>
+                        </div>
+                    </div>
+                    <div style="font-size: 15px">
+                        If there is a problem with a search result contact:
+                        <br/>
+                        senioryearbook@outlook.com
+                    </div>
+                    <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="searchRefineBtn">
+                        Refine<hr/>
+                    </button>
+                    <button class="button searchButton" onmousedown="triggerSearch(this.id)" id="searchRunButton">Search<hr/></button>
+                    <button class="button searchButton" onmousedown="toggleSearch(this.id)" id="searchCloseBtn">
+                        Close<hr/>
+                    </button>
+                </div>
+                <hr style="transform: rotateY(0deg); margin: 5px;"/>
+                <div id="searchRefineItems">
+                    <div style="width: 100%; background-color: rgba(35, 35, 35, .8)">
+                        <button class="button searchButton" onmousedown="toggleRefine(this.id)" id="closeRefine">
+                            Close Refine<hr/>
+                        </button>
+                    </div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="checked" id="searchResultFullCB">
+                        <div class="CBbox"><div class="CBboxInner CBboxInnerChecked" id="searchResultFullCBInner"></div></div>
+                        <div class="CBtext">Match Full Name</div>
+                    </div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="searchResultFirstCB">
+                        <div class="CBbox"><div class="CBboxInner" id="searchResultFirstCBInner"></div></div>
+                        <div class="CBtext">Match First Name</div>
+                    </div>
+                    <div class="button CBcontainer" onmousedown="toggleCB(this.id)" data-state="unchecked" id="searchResultLastCB">
+                        <div class="CBbox"><div class="CBboxInner" id="searchResultLastCBInner"></div></div>
+                        <div class="CBtext">Match Last Name</div>
+                    </div>
+                    <hr style="transform: rotateY(0deg); margin: 5px;"/>
+                </div>
+                <div class="searchResultSection" id="searchResultFull">
+                    <div class="searchResultSectionTitle">
+                        Name: 
+                        <span id="searchResultFullName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultFullPages"></div>
+                </div>
+                <div class="searchResultSection" id="searchResultFirst">
+                    <div class="searchResultSectionTitle">
+                        First Name: 
+                        <span id="searchResultFirstName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultFirstPages"></div>
+                </div>
+                <div class="searchResultSection" id="searchResultLast">
+                    <div class="searchResultSectionTitle">
+                        Last Name: 
+                        <span id="searchResultLastName"></span>
+                    </div>
+                    <div class="searchResultSectionPages" id="searchResultLastPages"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <button class="button openSearchBtn" id="openSearch" onmousedown=toggleSearch(this.id)>
+                Find People
+                <hr/>
+            </button>
+            <br/>
+            
+            <div class="YBPages" id="YBPages">
+                <button class="button menuBtn" id="goHome" onmousedown=menuItemSelect(this.id) data-page="../../index.html">
+                    Home
+                    <hr/>
+                </button>
+                <br/>
+            </div>
+    </body>
+</html>
