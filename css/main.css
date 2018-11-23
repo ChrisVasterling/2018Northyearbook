@@ -50,10 +50,10 @@ a, a:visited {
 }
 
 .topBar {
-    height: 30vh;
+    height: 50vh;
     width: 100vw;
     min-height: 200px;
-    background-image: url("http://chrisvasterling.github.io/delongyearbooks/Files/Images/Other/Background/bk1.JPG");
+    background-image: url("../media/BK.JPG");
     background-size: cover;
     background-position: center center;
     position: relative;
@@ -385,9 +385,6 @@ a, a:visited {
     padding-bottom: 75px;
 }
 @media screen and (max-width: 700px) {
-    .topBar {
-        background-image: url("https://scontent-ort2-2.xx.fbcdn.net/v/t31.0-8/411282_354228451291978_1028640939_o.jpg?_nc_cat=0&oh=7168533fad9ed3b6a1de5a3240b64f35&oe=5BDF371F")
-    }
     .toolBar {
         display: block;
         position: fixed;
