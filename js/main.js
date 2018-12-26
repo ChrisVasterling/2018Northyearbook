@@ -6,6 +6,7 @@ window.addEventListener("load", function(){
     setTopBarName()
     load_displayYBPages(pageRange)
     create_backToTop()
+    load_search_data()
 })
 window.addEventListener("resize", function(){
     setTopBarName()
@@ -88,6 +89,12 @@ function backToTop(id) {
     }, 250)
 }
 
+// adds search_data js file to all the pages (too lazy to add to html)
+function load_search_data() {
+    var element = document.createElement("script");
+    element.src = pageDistanceFromHome + "js/search_data.js";
+    document.head.appendChild(element);
+}
 
 function load_displayYBPages(pageRange) {
     var YBP = document.getElementById("YBPages"), img;
@@ -256,44 +263,8 @@ function triggerSearch(btnID) {
         runSearch()
     }, 250)
 }
-var studentPageList = [
-    ["student", "index", ["184", "185", "186", "187", "188", "189", "190", "191", "192"]],
-    ["andrew", "accola", ["52"]],
-    ["quinnlan", "acker", ["42"]],
-    ["karissa", "ackerman", ["64"]],
-    ["noah", "adsit", ["20", "39", "52", "61"]],
-    ["charlotte", "akervik", ["26", "64", "112", "136"]],
-    ["johannes", "akervik", ["42", "136"]],
-    ["tyler", "albrecht", ["13", "39", "42", "136"]],
-    ["larae", "allrich", ["52"]],
-    ["thomas", "amort", ["74"]],
-    ["isaiah", "amundson", ["38", "42"]],
-    ["phaedra", "amundson", ["52"]],
-    ["melissa", "amyotte", ["146"]],
-    ["melissa", "amyotte-stokes", ["146"]],
-    ["alexzandria", "anderson", ["42"]],
-    ["brody", "anderson", ["64"]],
-    ["alexis", "anderson", ["64"]],
-    ["connor", "anderson", ["22", "74"]],
-    ["elliana", "anderson", ["64"]],
-    ["heidi", "anderson", ["64"]],
-    ["jackie", "anderson", ["42"]],
-    ["jordan", "anderson", ["64"]],
-    ["spencer", "andrews", ["9", "38"]],
-    ["madalyn", "archibald-smith", ["42"]],
-    ["marley", "arel", ["52"]],
-    ["sarah", "arellano", ["37", "52"]],
-    ["hailey", "arneson", ["64", "108", "109", "138"]],
-    ["audrey", "arrington", ["74"]],
-    ["tyler", "arrington", ["74"]],
-    ["keith", "ash", ["146"]],
-    ["monica", "ashby", ["42", "138"]],
-    ["dylan", "ashley", ["39", "52", "140", "141"]],
-    ["devon", "atter", ["52", "141"]],
-    ["kayla", "aubart", ["74", "141"]],
-    ["gavin", "austin", ["64"]],
-    ["kendra", "awe", ["146"]],
-]
+
+// student page list from search_data file
 function runSearch() {
     var firstName = document.getElementById("searchTextBox1Input").value.toLowerCase(), 
         lastName = document.getElementById("searchTextBox2Input").value.toLowerCase(),
